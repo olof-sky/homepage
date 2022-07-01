@@ -40,6 +40,10 @@ export default {
 </script>
 
 <style scoped>
+.main-content {
+  height: 1000px;
+}
+
 #header-name {
   font-size: 64px;
   font-family: 'Montserrat', sans-serif;
@@ -78,7 +82,6 @@ export default {
 .profile-text {
   display: flex;
   padding-top: 66px;
-  /* align-content: flex-start; */
   flex-direction: column;
   align-items: flex-start;
 }
@@ -122,7 +125,7 @@ a:hover { text-decoration: none; color: #00000080; }
 
 .social-media-line {
   display: inline-block;
-  width: 40px;
+  width: 58px;
   height: 3px;
   margin-right: 18px;
   margin-left: 18px;
