@@ -119,12 +119,14 @@ export default {
   .divider-top-visible:hover {
     background-color: #a86355;
     transition: background-color .1s ease-in-out;
+    cursor: pointer;
   }
 
   .divider-bottom-visible:hover {
     visibility: visible;
     background-color: #a86355;
     transition: background-color .1s ease-in-out;
+    cursor: pointer;
   }
 
 </style>
