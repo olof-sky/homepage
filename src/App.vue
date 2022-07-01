@@ -2,13 +2,20 @@
   <NavBar></NavBar>
   <WelcomePage class="component"></WelcomePage>
   <PageDivider class="page-divider" :message="'ABOUT'"></PageDivider>
-  <WelcomePage class="component"></WelcomePage>
+  <AboutPage class="component"></AboutPage>
+  <PageDivider class="page-divider" :message="'PORTFOLIO'"></PageDivider>
+  <PortfolioPage class="component"></PortfolioPage>
+  <PageDivider class="page-divider" :message="'CONTACT'"></PageDivider>
+  <ContactPage class="component"></ContactPage>
 </template>
 
 <script>
 import NavBar from "./components/NavBar.vue"
 import PageDivider from "./components/PageDivider.vue"
 import WelcomePage from "./views/WelcomePage.vue"
+import PortfolioPage from "./views/PortfolioPage.vue"
+import ContactPage from "./views/ContactPage.vue"
+import AboutPage from "./views/AboutPage.vue"
 
 export default {
   name: 'App',
@@ -20,6 +27,9 @@ export default {
     NavBar,
     PageDivider,
     WelcomePage,
+    AboutPage,
+    PortfolioPage,
+    ContactPage
   }
 }
 </script>
@@ -45,7 +55,6 @@ export default {
   }
 
   .component {
-    height: 1000px;
     box-shadow: 0px 5px 8px 3px rgba(155, 155, 155, 0.3);
   }
 
