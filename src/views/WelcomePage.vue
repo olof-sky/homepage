@@ -8,7 +8,7 @@
           <ul class="social-media-icons">
             <div class="social-media-line"/>
             <li><a class="social-media-link" href="https://github.com/olof-sky"><fa :icon="[ 'fab', 'github' ]"/></a></li>
-            <li><a class="social-media-link" href="https://www.instagram.com/onpitchz/?hl=sv"><fa :icon="[ 'fab', 'instagram' ]"/></a></li>
+            <li><a class="social-media-link" href="https://konst.se/olof"><fa :icon="[ 'fas', 'paintbrush' ]"/></a></li>
             <li><a class="social-media-link" href="https://www.linkedin.com/in/olof-schylander-309a67211"><fa :icon="[ 'fab', 'linkedin-in' ]"/></a></li>
             <div class="social-media-line"/>
           </ul>
@@ -57,6 +57,7 @@ export default {
 #profile-header-text{
   margin-top: 25px;
   margin-left: 41px;
+  margin-bottom: 0px;
   width: 400px;
   font-size: 20px;
   font-family: 'Montserrat', sans-serif;
@@ -102,10 +103,18 @@ export default {
 }
 
 .social-media-icons {
+  display: inline-flex;
+  align-items: center;
   margin-top: 25px;
   margin-left: 27px;
-  height: 100px;
+  padding: 0;
+  height: 42px;
   font-size: 20px;
+  list-style-type: none;
+}
+
+.social-media-link {
+  padding: 10px;
 }
 
 a { color: #000000; }
@@ -153,6 +162,10 @@ a:hover { text-decoration: none; color: #00000080; }
   }
   .profile-picture-and-pattern {
     margin-top: 0px !important;
+  }
+
+  .social-media-icons {
+    margin-left: 0px;
   }
 }
 </style>

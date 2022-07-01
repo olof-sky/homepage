@@ -54,14 +54,28 @@ export default {
   display: none;
 }
 
-.topnav {
+.topnav ul {
+  display:flex;  
+  list-style:none;
   float: right;
+  height: 50px;
   margin-top: 15px;
   margin-right: 78px;
 }
 
 .topnav-li
 {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0 6px 0 6px;
+  border: 3px solid transparent;
+  position: relative;
+}
+
+.topnav-li a
+{
+   padding: 8px 16px 8px 16px;
    border: 3px solid transparent;
    position: relative;
 }
@@ -102,7 +116,8 @@ ul {
 li {
   font-family: 'Montserrat', sans-serif;
   font-size: 24px;
-  padding: 10px 12px 10px 12px;
+  padding: 10px 12px 10px 0px;
+  list-style-type: none
 }
 
 a {
@@ -126,7 +141,7 @@ a {
   .topnav-hamburger {
     display: inline-flex;
     position: absolute;
-    width: 140px;
+    width: 180px;
     height: 300px;
     right: 0;
     top: 80px;
@@ -136,7 +151,7 @@ a {
   }
  
   .topnav-li-hamburger {
-
+    margin-right: 10px;
   }
 
 }
