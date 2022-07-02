@@ -145,13 +145,21 @@ a:hover { text-decoration: none; color: #00000080; }
     width: 100vw;
   }
   .profile-text {
-    width: 100vw;
+    padding-top: 45px;
+    width: 200px;
     align-items: center !important;
   }
   #profile-header-text {
-    width: 350px !important;
+    margin: 50px 0 0 15px;
+    text-align: -webkit-center;
+    width: 300px !important;
+  }
+  #header-name {
+    font-size: 50px;
+    margin-left: 0;
   }
   #header-lastname {
+    font-size: 50px;
     margin-left: 0;
   }
   .profile-picture-pattern {
@@ -159,8 +167,9 @@ a:hover { text-decoration: none; color: #00000080; }
     width: 100%;
   }
   .profile-picture {
-    width: 350px !important;
-    height: 350px !important;
+    margin-top: 100px;
+    width: 250px !important;
+    height: 250px !important;
     padding-left: 0px !important;
   }
   .profile-picture-and-pattern {
