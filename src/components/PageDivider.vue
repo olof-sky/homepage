@@ -1,5 +1,6 @@
 <template>
   <div class="divider-container">
+    <div class="divider-mobile"><p>{{ message }}</p></div>
     <div class="divider-text"><p>{{ message }}</p></div>
     <div @click="goUp()" class="divider-top">
       <div class="divider-top-visible"></div>
@@ -44,13 +45,13 @@ export default {
       let pageHeight = 0;
       switch(this.message) {
         case "ABOUT":
-          pageHeight = 1100;
+          pageHeight = 2000;
           break;
         case "PORTFOLIO":
-          pageHeight = 2100;
+          pageHeight = 3000;
           break;      
         case "CONTACT":
-          pageHeight = 3100;
+          pageHeight = 4000;
           break;
         default:
           pageHeight = 0;
@@ -62,71 +63,117 @@ export default {
 </script>
 
 <style scoped>
-  .divider-container {
+.divider-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  height: 200px;
+  width: 200px;
+}
+.divider-text {
+  justify-content: space-around;
+  align-items: center;
+  pointer-events: none;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  color: #FFFFFF;
+  z-index: 1;
+}
+.divider-top {
+  position: absolute;
+  border-radius: 100%;
+  height: 200px;
+  width: 200px;
+}
+.divider-top-visible {
+  border-top-right-radius: 100px;
+  border-top-left-radius: 100px;
+  background-color: #E0826F;
+  width: 100%;
+  height: 50%;
+}
+.divider-bottom {
+  position: absolute;
+  margin-top: 200px;
+  border-radius: 100%;
+  height: 200px;
+  width: 200px;
+}
+.divider-bottom-visible {
+  border-bottom-right-radius: 100px;
+  border-bottom-left-radius: 100px;
+  background-color: #E0826F;
+  width: 100%;
+  height: 50%;
+}
+.divider-top-visible:hover {
+  background-color: #a86355;
+  transition: background-color .1s ease-in-out;
+  cursor: pointer;
+}
+.divider-bottom-visible:hover {
+  visibility: visible;
+  background-color: #a86355;
+  transition: background-color .1s ease-in-out;
+  cursor: pointer;
+}
+
+p {
+  display: flex;
+  justify-content: center;
+  margin-top: 0px;
+}
+
+/* Mobile CSS */
+@media only screen and (max-width: 1100px) {
+  .divider-mobile {
     display: flex;
-    align-items: center;
-    flex-direction: column;
     justify-content: center;
-    align-content: center;
-    height: 200px;
-    width: 200px;
+  }
+  .divider-mobile p {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  .divider-container {
+    height: 100px;
+    width: 100px;
+    margin-top: -50px;
   }
 
-  .divider-text {
+  .divider-mobile {
+    position: absolute;
+    border-radius: 100%;
+    height: 100px;
+    width: 100px;
+    background-color: #E0826F;
+
+
     justify-content: space-around;
     align-items: center;
     pointer-events: none;
     font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 24px;
-    line-height: 29px;
+    font-size: 14px;
     color: #FFFFFF;
-    z-index: 1;
+    z-index: 2;
+  }
+
+  .divider-text {
+    display: none;
   }
 
   .divider-top {
-    position: absolute;
-    border-radius: 100%;
-    height: 200px;
-    width: 200px;
-  }
-
-  .divider-top-visible {
-    border-top-right-radius: 100px;
-    border-top-left-radius: 100px;
-    background-color: #E0826F;
-    width: 100%;
-    height: 50%;
+    display: none;
   }
 
   .divider-bottom {
-    position: absolute;
-    margin-top: 200px;
-    border-radius: 100%;
-    height: 200px;
-    width: 200px;
+    display: none;
   }
-
-  .divider-bottom-visible {
-    border-bottom-right-radius: 100px;
-    border-bottom-left-radius: 100px;
-    background-color: #E0826F;
-    width: 100%;
-    height: 50%;
-  }
-
-  .divider-top-visible:hover {
-    background-color: #a86355;
-    transition: background-color .1s ease-in-out;
-    cursor: pointer;
-  }
-
-  .divider-bottom-visible:hover {
-    visibility: visible;
-    background-color: #a86355;
-    transition: background-color .1s ease-in-out;
-    cursor: pointer;
-  }
-
+}
 </style>
