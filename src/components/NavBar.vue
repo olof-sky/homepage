@@ -1,17 +1,21 @@
 <template>
     <header class="header-container">
-      <div style="width: 100%">
+      <div v-click-away="onClickAway" style="width: 100%">
+        <div class="topnav-home-link">
+          <router-link to="/">
+            <HomeIconLogo></HomeIconLogo>
+          </router-link>
+        </div>
         <div class="topnav">
           <ul>
-            <li class="topnav-li"><router-link to="/about">about</router-link></li>
+            <li class="topnav-li"><router-link @click="scrollIfWelcomePage('about')" to="/about">about</router-link></li>
             <li class="topnav-li"><router-link to="/artfolio">artfolio</router-link></li>
             <li class="topnav-li"><router-link to="/codefolio">codefolio</router-link></li>
             <li class="topnav-li"><router-link to="/github">github</router-link></li>
-            <li class="topnav-li"><router-link to="/contact">contact</router-link></li>
+            <li class="topnav-li"><router-link @click="scrollIfWelcomePage('contact')" to="/contact">contact</router-link></li>
           </ul>
         </div>
-        <button class="hamburger-menu-button">HAMBURGARE</button>
-        <div class="topnav-hamburger">
+        <div :class="hamburgerMenuVisible ? 'topnav-hamburger-toggled' : 'topnav-hamburger-untoggled'">
           <ul>
             <li class="topnav-li-hamburger"><router-link to="/about">about</router-link></li>
             <li class="topnav-li-hamburger"><router-link to="/artfolio">artfolio</router-link></li>
@@ -20,21 +24,64 @@
             <li class="topnav-li-hamburger"><router-link to="/contact">contact</router-link></li>
           </ul>
         </div>
+        <button @click="toggleHamburgerMenu()" :class="hamburgerMenuVisible ? 'hamburger-menu-button-toggled' : 'hamburger-menu-button-untoggled'">
+          <div :class="hamburgerMenuVisible ? 'hamburger-menu-line-dissapear' : 'hamburger-menu-line-untoggled'"></div>
+          <div :class="hamburgerMenuVisible ? 'hamburger-menu-line' : 'hamburger-menu-line-untoggled'"></div>
+          <div :class="hamburgerMenuVisible ? 'hamburger-menu-line-dissapear' : 'hamburger-menu-line-untoggled'"></div>
+        </button>
       </div>
     </header>
 </template>
 
 <script>
+import HomeIconLogo from '.././components/HomeIconLogo.vue'
+
 export default {
   name: 'NavBar',
-    data() {
-      return { }
+  data() {
+    return {
+      hamburgerMenuVisible: false,
+    }
+  },
+
+  components: {
+    HomeIconLogo,
   },
   
   methods: {
-    hamburgerMenuDropdown() {
-    }
-  },
+    toggleHamburgerMenu() {
+      if (!this.hamburgerMenuVisible) {
+        this.hamburgerMenuVisible = true;
+      }
+
+      else {
+        this.hamburgerMenuVisible = false;
+      }
+    },
+
+    scrollIfWelcomePage(linkName){
+      let pageHeight = 0;
+      switch(linkName) {         
+        case "about":
+          pageHeight = 1000;
+          break;
+        case "contact":
+          pageHeight = 3000;
+          break;
+        default:
+          pageHeight = 0;
+      }
+      if (window.location.pathname == '/') {
+        this.$router.replace('/', {silent:true})
+        window.scroll({top:pageHeight, left:0, behavior: 'smooth'});
+      }
+    },
+  
+    onClickAway() {
+      this.hamburgerMenuVisible = false;
+    },
+
+  }
 }
 </script>
 
@@ -46,12 +93,26 @@ export default {
   box-shadow: 0px 6px 14px 6px #9b9b9b;
 }
 
-.hamburger-menu-button {
+.hamburger-menu-button-untoggled {
   display: none;
 }
 
-.topnav-hamburger {
+.hamburger-menu-button-toggled {
   display: none;
+}
+
+.topnav-hamburger-untoggled {
+  display: none;
+}
+
+.topnav-hamburger-toggled {
+  display: none;
+}
+
+.topnav-home-link {
+  position: absolute;
+  left: 28px;
+  top: 19px;
 }
 
 .topnav ul {
@@ -126,32 +187,117 @@ a {
   color: #FFFFFF;
 }
 
+
+/* Mobile CSS */
 @media only screen and (max-width: 1100px) {
   .topnav {
     display: none;
   }
 
-  .hamburger-menu-button {
-    display: inline-flex;
-    position: absolute;
-    right: 15px;
-    top: 20px;
+  .header-container {
+    position: fixed;
+    z-index: 20;
+    box-shadow: none;
   }
 
-  .topnav-hamburger {
+  .hamburger-menu-line {
+    height: 5px;
+    width: 100%;
+    background-color: #181818;
+    transition: background-color 0.1s linear;
+  }
+
+  .hamburger-menu-line-untoggled {
+    height: 5px;
+    width: 100%;
+    background-color: #FFFFFF;
+    transition: background-color 0.1s linear;
+  }
+
+  .hamburger-menu-line-dissapear {
+    height: 5px;
+    width: 100%;
+    background-color: #000000;
+  }
+
+  .hamburger-menu-button-untoggled {
     display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
     position: absolute;
+    height: 40px;
+    width: 60px;
+    right: 45px;
+    top: 25px;
+    background: none;
+    color: inherit;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    z-index: 19;
+    transition: width 0.1s linear;
+  }
+
+  .hamburger-menu-button-toggled {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: absolute;
+    height: 40px;
+    width: 92px;
+    right: 45px;
+    top: 25px;
+    background: none;
+    color: inherit;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    z-index: 19;
+    transition: width 0.1s linear;
+  }
+
+  .topnav-hamburger-toggled {
+    display: inline-flex;
+    position: fixed;
     width: 180px;
-    height: 300px;
+    height: 390px;
     right: 0;
-    top: 80px;
+    top: 85px;
     display: inline-flex;
     background-color: #000000;
-    z-index: 1;
+    overflow-y: hidden;
+    transition: height 0.1s linear;
+  }
+
+  .topnav-hamburger-untoggled {
+    display: inline-flex;
+    position: fixed;
+    width: 180px;
+    height: 0px;
+    right: 0;
+    top: 85px;
+    display: inline-flex;
+    background-color: #000000;
+    overflow-y: hidden;
+    transition: height 0.1s linear;
   }
  
   .topnav-li-hamburger {
-    margin-right: 10px;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .topnav-hamburger-toggled ul {
+    height: 100%;
+    width: 180px;
+    padding: 0;
+    margin: 0 0 0 0;
+    overflow: hidden;
   }
 
 }
