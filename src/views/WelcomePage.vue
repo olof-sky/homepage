@@ -1,174 +1,71 @@
 <template>
-    <div class="main-content">
-      <div class="profile-info">
-        <div class="profile-text">
-          <h1 id="header-name">Olof</h1>
-          <h1 id="header-lastname">Schylander</h1>
-          <p id="profile-header-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vulputate laoreet commodo pulvinar vel amet, massa.</p>
-          <ul class="social-media-icons">
-            <div class="social-media-line"/>
-            <li><a class="social-media-link" href="https://github.com/olof-sky"><fa :icon="[ 'fab', 'github' ]"/></a></li>
-            <li><a class="social-media-link" href="https://konst.se/olof"><fa :icon="[ 'fas', 'paintbrush' ]"/></a></li>
-            <li><a class="social-media-link" href="https://www.linkedin.com/in/olof-schylander-309a67211"><fa :icon="[ 'fab', 'linkedin-in' ]"/></a></li>
-            <div class="social-media-line"/>
-          </ul>
-        </div>
-        <div class="profile-picture-and-pattern">
-          <ProfilePicturePattern class="profile-picture-pattern"></ProfilePicturePattern>
-          <img class="profile-picture" :src="image"/>
-        </div>
-      </div>
-    </div>
+  <div class="welcomepage">
+    <WelcomePage class="component"></WelcomePage>
+    <PageDivider class="page-divider" :message="'ABOUT'"></PageDivider>
+    <AboutPage class="component"></AboutPage>
+    <PageDivider class="page-divider" :message="'PORTFOLIO'"></PageDivider>
+    <PortfolioPage class="component"></PortfolioPage>
+    <PageDivider class="page-divider" :message="'CONTACT'"></PageDivider>
+    <ContactPage class="component"></ContactPage>
+  </div>
 </template>
 
 <script>
-import image from "../assets/profilePicture.png"
-import ProfilePicturePattern from "../components/ProfilePicturePattern.vue"
-
+import PageDivider from ".././components/PageDivider.vue"
+import WelcomePage from "./WelcomePageViews/WelcomePageHeader.vue"
+import PortfolioPage from "./WelcomePageViews/PortfolioPage.vue"
+import ContactPage from "./WelcomePageViews/ContactPage.vue"
+import AboutPage from "./WelcomePageViews/AboutPage.vue"
 
 export default {
-  components: {
-    ProfilePicturePattern,
-  },
-
-  data() {
+  name: 'App',
+  data () {
     return {
-      image: image
     }
   },
+  components: {
+    PageDivider,
+    WelcomePage,
+    AboutPage,
+    PortfolioPage,
+    ContactPage,
+  }
 }
 </script>
 
-<style scoped>
-.main-content {
-  height: 1000px;
-}
-
-#header-name {
-  font-size: 64px;
-  font-family: 'Montserrat', sans-serif;
-  margin: 0px;
-  color: #212121;
-}
-
-#header-lastname {
-  font-size: 64px;
-  font-family: 'Montserrat', sans-serif;
-  margin: 0 0 0 41px;
-  color: #212121;
-}
-
-#profile-header-text{
-  margin-top: 25px;
-  margin-left: 41px;
-  margin-bottom: 0px;
-  width: 400px;
-  font-size: 20px;
-  font-family: 'Montserrat', sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px;
-  color: rgba(33, 33, 33, 0.75);
-  text-align: left;
-}
-
-.profile-info {
-  display: inline-flex;
-  margin-top: 170px;
-  padding-left: 50px;
-  padding-right: 50px;
-}
-
-.profile-text {
-  display: flex;
-  padding-top: 66px;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.profile-picture {
-  padding-left: 101px;
-  width: 465px;
-  height: 465px;
-  z-index: 0;
-}
-
-.profile-picture-pattern {
-  left: -70px;
-  top: -160px;
-  position: absolute;
-}
-
-.profile-picture-and-pattern {
-  margin-top: 6px;
-  display: flex;
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
   position: relative;
+  width: 100%;
 }
-
-.social-media-icons {
-  display: inline-flex;
-  align-items: center;
-  margin-top: 25px;
-  margin-left: 27px;
+.divider-container {
+  width: 200px;
+  margin-top: -100px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+.component {
+  box-shadow: 0px 5px 8px 3px rgba(155, 155, 155, 0.3);
+}
+html, body{ 
+  background-color: #F6F6F6;
+  color: #2c3e50;
+  height: 100%;
+  margin: 0;
   padding: 0;
-  height: 42px;
-  font-size: 20px;
-  list-style-type: none;
 }
-
-.social-media-link {
-  padding: 10px;
-}
-
-a { color: #000000; }
-a:hover { text-decoration: none; color: #00000080; }
-
-.social-media-line {
-  display: inline-block;
-  width: 58px;
-  height: 3px;
-  margin-right: 18px;
-  margin-left: 18px;
-  margin-bottom: 5px;
-  background-color: #000000;
-}
-
 @media only screen and (max-width: 1100px) {
-  .profile-info {
-    display: flex !important;
-    flex-direction: column-reverse;
-    align-items: center !important;
-    margin-top: 0 !important;
-    padding-top: 70px;
-    padding-left: 0px !important;
-    padding-right: 0px !important;
-    width: 100vw;
+  .main-content {
   }
-  .profile-text {
-    width: 100vw;
-    align-items: center !important;
-  }
-  #profile-header-text {
-    width: 350px !important;
-  }
-  #header-lastname {
-    margin-left: 0;
-  }
-  .profile-picture-pattern {
-    visibility: hidden;
-    width: 100%;
-  }
-  .profile-picture {
-    width: 350px !important;
-    height: 350px !important;
-    padding-left: 0px !important;
-  }
-  .profile-picture-and-pattern {
-    margin-top: 0px !important;
-  }
-
-  .social-media-icons {
-    margin-left: 0px;
+  .component {
+    height: 1200px;
   }
 }
 </style>
