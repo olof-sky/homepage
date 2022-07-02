@@ -1,35 +1,21 @@
 <template>
-  <NavBar></NavBar>
-  <WelcomePage class="component"></WelcomePage>
-  <PageDivider class="page-divider" :message="'ABOUT'"></PageDivider>
-  <AboutPage class="component"></AboutPage>
-  <PageDivider class="page-divider" :message="'PORTFOLIO'"></PageDivider>
-  <PortfolioPage class="component"></PortfolioPage>
-  <PageDivider class="page-divider" :message="'CONTACT'"></PageDivider>
-  <ContactPage class="component"></ContactPage>
+  <NavBar/>
+  <router-view/>
 </template>
 
 <script>
-import NavBar from "./components/NavBar.vue"
-import PageDivider from "./components/PageDivider.vue"
-import WelcomePage from "./views/WelcomePage.vue"
-import PortfolioPage from "./views/PortfolioPage.vue"
-import ContactPage from "./views/ContactPage.vue"
-import AboutPage from "./views/AboutPage.vue"
+import NavBar from './components/NavBar.vue';
 
 export default {
+
   name: 'App',
   data () {
     return {
     }
   },
+
   components: {
     NavBar,
-    PageDivider,
-    WelcomePage,
-    AboutPage,
-    PortfolioPage,
-    ContactPage
   }
 }
 </script>
