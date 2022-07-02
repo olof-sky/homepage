@@ -34,7 +34,7 @@ export default {
 
   watch: {
     windowTop() {
-      if (this.windowTop > 1700 && this.windowTop < 2300 && window.innerWidth < 600) {
+      if (this.windowTop > 1700 && this.windowTop < 2300 && window.innerWidth) {
         this.scrollWatchDisabled = true;
       }
 
@@ -57,7 +57,7 @@ export default {
 
 h1 {
   font-size: 64px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 78px;
   font-family: 'Montserrat', sans-serif;
   color: #000000;
@@ -87,6 +87,32 @@ h1 {
   cursor: pointer;
 }
 
+#code-transition:hover {
+  margin-left: 50px;
+  font-size: 80px;
+  cursor: pointer;
+}
+
+#art-transition:hover {
+  margin-right: 10px;
+  font-size: 80px;
+  cursor: pointer;
+}
+
+#code-transition {
+  margin-left: 60px;
+  text-decoration: underline;
+  text-decoration-color: #E0826F;
+  transition: margin-left .7s ease-in-out;
+}  
+
+#art-transition {
+  margin-right: 15px;
+  text-decoration: underline;
+  text-decoration-color: #E0826F;
+  transition: margin-right .7s ease-in-out;
+}
+
 .art-code-container {
   display: inline-flex;
   align-items: center;
@@ -102,9 +128,19 @@ h1 {
 
 #art-code-middle-line {
   height: 200px;
-  width: 10px;
+  width: 9px;
   margin: 80px;
   background-color: #000000;
+  overflow-y: hidden;
+  transition: height 0.4s linear;
+}
+
+#art-code-middle-line-transition {
+  height: 400px;
+  width: 9px;
+  margin: 80px;
+  background-color: #000000;
+  transition: height 0.4s linear;
 }
 
 @media only screen and (max-width: 600px) { 
@@ -113,16 +149,7 @@ h1 {
   }
 
   .art-code-container {
-    margin-bottom: 100px;
-  }
-
-  #art-code-middle-line {
-    height:150;
-    width: 5px;
-    margin: 15px;
-    background-color: #000000;
-    overflow-y: hidden;
-    transition: height 0.4s linear;
+    margin-bottom: 35px;
   }
 
   h1 {
@@ -147,7 +174,7 @@ h1 {
     margin-left: 40px;
     text-decoration: underline;
     text-decoration-color: #E0826F;
-    transition: margin-left .4s ease-in-out;
+    transition: margin-left .7s ease-in-out;
   }  
 
   #art-transition {
@@ -155,6 +182,15 @@ h1 {
     text-decoration: underline;
     text-decoration-color: #E0826F;
     transition: margin-right .7s ease-in-out;
+  }
+
+  #art-code-middle-line {
+    height:150;
+    width: 5px;
+    margin: 15px;
+    background-color: #000000;
+    overflow-y: hidden;
+    transition: height 0.4s linear;
   }
 
   #art-code-middle-line-transition {
