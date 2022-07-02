@@ -187,6 +187,27 @@ a {
   color: #FFFFFF;
 }
 
+@media only screen and (max-height: 430px) { 
+  .topnav-hamburger-toggled {
+    position: fixed;
+    width: 100% !important;
+    height: 100px !important;
+    right: 0;
+    top: 85px;
+    display: inline-flex;
+    background-color: #000000;
+    overflow: scroll;
+    transition: height 0.1s linear;
+  }
+
+  .topnav-hamburger-toggled ul {
+    display: inline-flex;
+    flex-direction: row !important;
+    width: 100% !important;
+    height: 70px;
+    margin: 0 0 0 0;
+  }
+}
 
 /* Mobile CSS */
 @media only screen and (max-width: 1100px) {
@@ -267,7 +288,7 @@ a {
     top: 85px;
     display: inline-flex;
     background-color: #000000;
-    overflow-y: hidden;
+    overflow: scroll;
     transition: height 0.1s linear;
   }
 
@@ -280,7 +301,7 @@ a {
     top: 85px;
     display: inline-flex;
     background-color: #000000;
-    overflow-y: hidden;
+    overflow: scroll;
     transition: height 0.1s linear;
   }
  
