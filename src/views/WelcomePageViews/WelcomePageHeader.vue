@@ -177,6 +177,7 @@ a:hover { text-decoration: none; color: #00000080; }
   }
 
   .social-media-icons {
+    margin-top: 55px !important;
     margin-left: 0px;
   }
 }
