@@ -8,20 +8,20 @@
         </div>
         <div class="topnav">
           <ul>
-            <li class="topnav-li"><router-link @click="scrollIfWelcomePage('about')" to="/about">about</router-link></li>
-            <li class="topnav-li"><router-link to="/artfolio">artfolio</router-link></li>
-            <li class="topnav-li"><router-link to="/codefolio">codefolio</router-link></li>
-            <li class="topnav-li"><router-link to="/github">github</router-link></li>
-            <li class="topnav-li"><router-link @click="scrollIfWelcomePage('contact')" to="/contact">contact</router-link></li>
+            <li :class="activeUrl == '/about' ? 'topnav-li-active' : 'topnav-li'"><router-link @click="scrollIfWelcomePage('about')" to="/about">about</router-link></li>
+            <li :class="activeUrl == '/artfolio' ? 'topnav-li-active' : 'topnav-li'"><router-link to="/artfolio">artfolio</router-link></li>
+            <li :class="activeUrl == '/codefolio' ? 'topnav-li-active' : 'topnav-li'"><router-link to="/codefolio">codefolio</router-link></li>
+            <li :class="activeUrl == '/github' ? 'topnav-li-active' : 'topnav-li'"><router-link to="/github">github</router-link></li>
+            <li :class="activeUrl == '/contact' ? 'topnav-li-active' : 'topnav-li'"><router-link @click="scrollIfWelcomePage('contact')" to="/contact">contact</router-link></li>
           </ul>
         </div>
         <div :class="hamburgerMenuVisible ? 'topnav-hamburger-toggled' : 'topnav-hamburger-untoggled'">
           <ul>
-            <li class="topnav-li-hamburger"><router-link to="/about">about</router-link></li>
-            <li class="topnav-li-hamburger"><router-link to="/artfolio">artfolio</router-link></li>
-            <li class="topnav-li-hamburger"><router-link to="/codefolio">codefolio</router-link></li>
-            <li class="topnav-li-hamburger"><router-link to="/github">github</router-link></li>
-            <li class="topnav-li-hamburger"><router-link to="/contact">contact</router-link></li>
+            <li :class="activeUrl == '/about' ? 'topnav-li-hamburger-active' : 'topnav-li-hamburger'"><router-link to="/about">about</router-link></li>
+            <li :class="activeUrl == '/artfolio' ? 'topnav-li-hamburger-active' : 'topnav-li-hamburger'"><router-link to="/artfolio">artfolio</router-link></li>
+            <li :class="activeUrl == '/codefolio' ? 'topnav-li-hamburger-active' : 'topnav-li-hamburger'"><router-link to="/codefolio">codefolio</router-link></li>
+            <li :class="activeUrl == '/github' ? 'topnav-li-hamburger-active' : 'topnav-li-hamburger'"><router-link to="/github">github</router-link></li>
+            <li :class="activeUrl == '/contact' ? 'topnav-li-hamburger-active' : 'topnav-li-hamburger'"><router-link to="/contact">contact</router-link></li>
           </ul>
         </div>
         <button @click="toggleHamburgerMenu()" :class="hamburgerMenuVisible ? 'hamburger-menu-button-toggled' : 'hamburger-menu-button-untoggled'">
@@ -41,6 +41,13 @@ export default {
   data() {
     return {
       hamburgerMenuVisible: false,
+      activeUrl: '',
+    }
+  },
+
+  watch:{
+    $route () {
+      this.checkActiveUrl()
     }
   },
 
@@ -76,11 +83,14 @@ export default {
         window.scroll({top:pageHeight, left:0, behavior: 'smooth'});
       }
     },
+
+    checkActiveUrl() {
+      this.activeUrl = window.location.pathname;
+    },
   
     onClickAway() {
       this.hamburgerMenuVisible = false;
     },
-
   }
 }
 </script>
@@ -134,7 +144,23 @@ export default {
   position: relative;
 }
 
+.topnav-li-active {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0 6px 0 6px;
+  border: 3px solid #FFFFFF;
+  position: relative;
+}
+
 .topnav-li a
+{
+   padding: 8px 16px 8px 16px;
+   border: 3px solid transparent;
+   position: relative;
+}
+
+.topnav-li-active a
 {
    padding: 8px 16px 8px 16px;
    border: 3px solid transparent;
@@ -159,6 +185,28 @@ export default {
 }
 
 .topnav-li:after {
+   position:absolute;
+   bottom:-10px;
+   left:10%;
+   content:"";
+   display:block;
+   height:10px;
+   width:80%;
+   background:#000000;
+}
+
+.topnav-li-active:before {
+   position:absolute;
+   top:-10px;
+   left:10%;
+   content:"";
+   display:block;
+   height:10px;
+   width:80%;
+   background:#000000;
+}
+
+.topnav-li-active:after {
    position:absolute;
    bottom:-10px;
    left:10%;
