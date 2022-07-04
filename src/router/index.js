@@ -2,6 +2,7 @@ import { createWebHistory, createRouter } from "vue-router";
 import WelcomePage from "@/views/WelcomePage.vue";
 
 import ContactPage from "@/views/WelcomePageViews/ContactPage.vue";
+import AboutPage from "@/views/WelcomePageViews/AboutPage.vue";
 
 import CodefolioPage from "@/views/PortfolioViews/CodefolioPage.vue";
 import ArtfolioPage from "@/views/PortfolioViews/ArtfolioPage.vue";
@@ -11,6 +12,12 @@ const routes = [
     path: "/",
     name: "WelcomePage",
     component: WelcomePage,
+  },
+
+  {
+    path: "/about",
+    name: "about",
+    component: AboutPage,
   },
 
   {
@@ -36,5 +43,6 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 });
+
 
 export default router;
