@@ -1,7 +1,9 @@
 import { createWebHistory, createRouter } from "vue-router";
 import WelcomePage from "@/views/WelcomePage.vue";
 
-import ContactPage from "@/views/WelcomePageViews/ContactPage.vue";
+import ContactPage from "@/views/ContactViews/ContactPage.vue";
+import ContactMessageSent from "@/views/ContactViews/ContactMessageSent.vue";
+
 import AboutPage from "@/views/WelcomePageViews/AboutPage.vue";
 
 import CodefolioPage from "@/views/PortfolioViews/CodefolioPage.vue";
@@ -36,6 +38,12 @@ const routes = [
     path: "/contact",
     name: "ContactPage",
     component: ContactPage,
+  },
+
+  {
+    path: "/contact/sent",
+    name: "ContactMessageSent",
+    component: ContactMessageSent,
   },
 ];
 
