@@ -2,7 +2,7 @@
   <div class="welcomepage">
     <WelcomePage class="component"></WelcomePage>
     <PageDivider class="page-divider" :message="'ABOUT'"></PageDivider>
-    <AboutPage class="component-2"></AboutPage>
+    <AboutPage class="component-inset"></AboutPage>
     <PageDivider class="page-divider" :message="'PORTFOLIO'"></PageDivider>
     <PortfolioPage class="component"></PortfolioPage>
     <PageDivider class="page-divider" :message="'CONTACT'"></PageDivider>
@@ -52,7 +52,7 @@ body {
   box-shadow: 11px 11px 7px 0px rgb(155 155 155 / 20%);
 }
 
-.component-2 {
+.component-inset {
   box-shadow: inset 11px -11px 7px 0px rgb(155 155 155 / 20%);
 }
 
