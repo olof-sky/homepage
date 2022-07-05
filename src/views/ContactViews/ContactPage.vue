@@ -67,7 +67,7 @@ export default {
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
-  background-size: 100%;
+  background-size: cover;
   opacity: 0.3;
   top: 0;
   left: 0;
@@ -207,7 +207,7 @@ textarea::-webkit-scrollbar-thumb {background-color:#babac0;border-radius:16px;b
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
-    background-size: 160%;
+    background-size: cover;
   }
 
   input { 
