@@ -336,7 +336,7 @@ a {
     top: 85px;
     display: inline-flex;
     background-color: #000000;
-    overflow: scroll;
+    overflow: none;
     transition: height 0.1s linear;
   }
 
@@ -359,6 +359,23 @@ a {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+  }
+
+  .topnav-li-hamburger-active {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .topnav-li-hamburger a:hover {
+    color: #ffffff66
+  }
+
+  .topnav-li-hamburger-active a {
+    color: #ffffff66;
+    text-decoration: line-through;
   }
 
   .topnav-hamburger-toggled ul {
