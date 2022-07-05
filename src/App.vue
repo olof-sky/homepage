@@ -30,16 +30,6 @@ export default {
     width: 100%;
   }
 
-  .divider-container {
-    width: 200px;
-    margin-top: -100px;
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-  }
-
   html, body{ 
     color: #2c3e50;
     height: 100%;
