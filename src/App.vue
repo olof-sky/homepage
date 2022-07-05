@@ -52,8 +52,5 @@ export default {
   body::-webkit-scrollbar-thumb {background-color:#babac0;border-radius:16px;border:4px solid #fff}
 
   @media only screen and (max-width: 1100px) {
-    .component {
-      height: 1200px;
-    }
   }
 </style>
