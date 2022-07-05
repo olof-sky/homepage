@@ -53,6 +53,8 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  background-color: #FFF;
+  z-index: 2;
 }
 
 h1 {

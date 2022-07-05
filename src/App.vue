@@ -40,22 +40,18 @@ export default {
     right: 0;
   }
 
-  .component {
-    box-shadow: 0px 5px 8px 3px rgba(155, 155, 155, 0.3);
-  }
-
   html, body{ 
-    background-color: #F6F6F6;
     color: #2c3e50;
     height: 100%;
     margin: 0;
     padding: 0;
   }
 
-  @media only screen and (max-width: 1100px) {
-    .main-content {
-    }
+  body::-webkit-scrollbar       {background-color:#fff;width:16px}
+  body::-webkit-scrollbar-track {background-color:#fff}
+  body::-webkit-scrollbar-thumb {background-color:#babac0;border-radius:16px;border:4px solid #fff}
 
+  @media only screen and (max-width: 1100px) {
     .component {
       height: 1200px;
     }

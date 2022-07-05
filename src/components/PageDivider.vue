@@ -82,13 +82,14 @@ export default {
   font-size: 24px;
   line-height: 29px;
   color: #FFFFFF;
-  z-index: 1;
+  z-index: 2;
 }
 .divider-top {
   position: absolute;
   border-radius: 100%;
   height: 200px;
   width: 200px;
+  z-index: 1;
 }
 .divider-top-visible {
   border-top-right-radius: 100px;
@@ -103,6 +104,7 @@ export default {
   border-radius: 100%;
   height: 200px;
   width: 200px;
+  z-index: 1;
 }
 .divider-bottom-visible {
   border-bottom-right-radius: 100px;

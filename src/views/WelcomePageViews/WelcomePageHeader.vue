@@ -40,8 +40,10 @@ export default {
 </script>
 
 <style scoped>
+
 .main-content {
   height: 1000px;
+  background-color: #FFF;
 }
 
 #header-name {

@@ -2,7 +2,7 @@
   <div class="welcomepage">
     <WelcomePage class="component"></WelcomePage>
     <PageDivider class="page-divider" :message="'ABOUT'"></PageDivider>
-    <AboutPage class="component"></AboutPage>
+    <AboutPage class="component-2"></AboutPage>
     <PageDivider class="page-divider" :message="'PORTFOLIO'"></PageDivider>
     <PortfolioPage class="component"></PortfolioPage>
     <PageDivider class="page-divider" :message="'CONTACT'"></PageDivider>
@@ -14,7 +14,7 @@
 import PageDivider from ".././components/PageDivider.vue"
 import WelcomePage from "./WelcomePageViews/WelcomePageHeader.vue"
 import PortfolioPage from "./WelcomePageViews/PortfolioPage.vue"
-import ContactPage from "./WelcomePageViews/ContactPage.vue"
+import ContactPage from "./ContactViews/ContactPage.vue"
 import AboutPage from "./WelcomePageViews/AboutPage.vue"
 
 export default {
@@ -34,14 +34,10 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  position: relative;
-  width: 100%;
+body {
+  background-color: #F6F6F6;
 }
+
 .divider-container {
   width: 200px;
   margin-top: -100px;
@@ -51,19 +47,16 @@ export default {
   left: 0;
   right: 0;
 }
+
 .component {
-  box-shadow: 0px 5px 8px 3px rgba(155, 155, 155, 0.3);
+  box-shadow: 11px 11px 7px 0px rgb(155 155 155 / 20%);
 }
-html, body{ 
-  background-color: #F6F6F6;
-  color: #2c3e50;
-  height: 100%;
-  margin: 0;
-  padding: 0;
+
+.component-2 {
+  box-shadow: inset 11px -11px 7px 0px rgb(155 155 155 / 20%);
 }
+
 @media only screen and (max-width: 1100px) {
-  .main-content {
-  }
   .component {
     height: 1200px;
   }
