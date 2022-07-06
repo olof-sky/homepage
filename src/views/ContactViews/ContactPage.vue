@@ -78,7 +78,7 @@ export default {
 }
 
 input {
-  height: 50px;
+  height: 70px;
   width: 70%;
   font-size: 20px;
   font-family: sans-serif;
@@ -101,7 +101,7 @@ textarea {
   height: 250px;
   font-size: 20px;
   font-family: sans-serif;
-  padding: 0.7em 0.5em 0 3em;
+  padding: 1.1em 0.5em 0 3em;
   background-color: rgba(15, 21, 27, 0.5);
   color: #fff;
   max-width: 100%;
@@ -162,7 +162,7 @@ textarea::-webkit-scrollbar-thumb {background-color:#babac0;border-radius:16px;b
 
 .email-form-container {
   position: relative;
-  margin: 15% 25% 50% 25%;
+  margin: 350px 25% 50% 25%;
   display: inline-flex;
   flex-direction: column;
   align-content: center;
@@ -186,10 +186,10 @@ textarea::-webkit-scrollbar-thumb {background-color:#babac0;border-radius:16px;b
 .contact-label-card-icon {
   position: absolute;
   color: white;
-  margin-top: 7px;
+  margin-top: 14px;
   margin-left: 55px;
   padding: 8px;
-  font-size: 20px;
+  font-size: 25px;
   z-index: 1;
 }
 
@@ -211,8 +211,8 @@ textarea::-webkit-scrollbar-thumb {background-color:#babac0;border-radius:16px;b
   }
 
   input { 
-    font-size: 17px;
-    height: 40px;
+    font-size: 18px;
+    height: 60px;
     width: 80%;
     padding: 1px 0.5em 0 3em;
   }
@@ -222,10 +222,9 @@ textarea::-webkit-scrollbar-thumb {background-color:#babac0;border-radius:16px;b
   }
   
   textarea { 
-    font-size: 17px;
+    font-size: 18px;
     width: 80%;
     height: 130px;
-    resize: vertical;
   }
 
   .contact-label-card {
@@ -234,11 +233,12 @@ textarea::-webkit-scrollbar-thumb {background-color:#babac0;border-radius:16px;b
     padding-left: 0px;
     display: inline-flex;
     flex-direction: column;
+    overflow: none;
   }
 
   .contact-label-card-icon {
-    margin-top: 3px;
-    margin-left: 6px;
+    margin-top: 12px;
+    margin-left: 10px;
   }
   
   .email-form-container {

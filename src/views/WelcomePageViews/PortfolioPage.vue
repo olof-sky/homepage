@@ -34,7 +34,7 @@ export default {
 
   watch: {
     windowTop() {
-      if (this.windowTop > 1700 && this.windowTop < 2300 && window.innerWidth) {
+      if (this.windowTop > 3400 && this.windowTop < 4600) {
         this.scrollWatchDisabled = true;
       }
 

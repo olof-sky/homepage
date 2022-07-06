@@ -69,26 +69,24 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-content: center;
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
 }
 .divider-text {
-  justify-content: space-around;
-  align-items: center;
+  padding-bottom: 16px;
   pointer-events: none;
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 24px;
-  line-height: 29px;
+  font-size: 18px;
   color: #FFFFFF;
   z-index: 2;
 }
 .divider-top {
   position: absolute;
   border-radius: 100%;
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
   z-index: 1;
 }
 .divider-top-visible {
@@ -100,10 +98,10 @@ export default {
 }
 .divider-bottom {
   position: absolute;
-  margin-top: 200px;
+  margin-top: 150px;
   border-radius: 100%;
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
   z-index: 1;
 }
 .divider-bottom-visible {

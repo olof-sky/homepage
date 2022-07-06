@@ -40,7 +40,7 @@ body {
 
 .divider-container {
   width: 200px;
-  margin-top: -100px;
+  margin-top: -75px;
   position: absolute;
   margin-left: auto;
   margin-right: auto;
