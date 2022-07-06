@@ -1,6 +1,6 @@
 <template>
     <header class="header-container">
-      <div v-click-away="onClickAway" style="width: 100%">
+      <div style="width: 100%">
         <div class="topnav-home-link">
           <router-link to="/">
             <HomeIconLogo></HomeIconLogo>
@@ -16,7 +16,7 @@
           </ul>
         </div>
         <div :class="hamburgerMenuVisible ? 'topnav-hamburger-toggled' : 'topnav-hamburger-untoggled'">
-          <ul>
+          <ul @click="toggleHamburgerMenu()">
             <li :class="activeUrl == '/about' ? 'topnav-li-hamburger-active' : 'topnav-li-hamburger'"><router-link to="/about">about</router-link></li>
             <li :class="activeUrl == '/artfolio' ? 'topnav-li-hamburger-active' : 'topnav-li-hamburger'"><router-link to="/artfolio">artfolio</router-link></li>
             <li :class="activeUrl == '/codefolio' ? 'topnav-li-hamburger-active' : 'topnav-li-hamburger'"><router-link to="/codefolio">codefolio</router-link></li>
@@ -87,10 +87,6 @@ export default {
     checkActiveUrl() {
       this.activeUrl = window.location.pathname;
     },
-  
-    onClickAway() {
-      this.hamburgerMenuVisible = false;
-    },
   }
 }
 </script>
@@ -125,13 +121,17 @@ export default {
   top: 19px;
 }
 
+.icon {
+  height: 40px;
+}
+
 .topnav ul {
   display:flex;  
   list-style:none;
   float: right;
   height: 50px;
   margin-top: 15px;
-  margin-right: 78px;
+  margin-right: 10%;
 }
 
 .topnav-li
@@ -224,7 +224,11 @@ ul {
 
 li {
   font-family: 'Montserrat', sans-serif;
-  font-size: 24px;
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
   padding: 10px 12px 10px 0px;
   list-style-type: none
 }
@@ -236,16 +240,41 @@ a {
 }
 
 @media only screen and (max-height: 430px) { 
+  .topnav-hamburger-untoggled {
+    display: inline-flex;
+    position: fixed;
+    width: 100% !important;
+    height: 0px !important;
+    right: 0;
+    padding: 0;
+    display: inline-flex;
+    background-color: #000000;
+    overflow: none;
+    transition: height 0.1s linear;
+  }
+  
   .topnav-hamburger-toggled {
     position: fixed;
     width: 100% !important;
     height: 100px !important;
     right: 0;
-    top: 85px;
     display: inline-flex;
     background-color: #000000;
-    overflow: scroll;
+    overflow: none;
     transition: height 0.1s linear;
+  }
+
+  .topnav-hamburger-untoggled ul {
+    display: inline-flex;
+    flex-direction: row !important;
+    width: 100% !important;
+    height: 70px;
+    margin: 0 0 0 0;
+    height: 100%;
+    width: 180px;
+    padding: 0 0 0 0 !important;
+    margin: 0 0 0 0;
+    overflow: hidden;
   }
 
   .topnav-hamburger-toggled ul {
@@ -254,6 +283,21 @@ a {
     width: 100% !important;
     height: 70px;
     margin: 0 0 0 0;
+    height: 100%;
+    width: 180px;
+    padding: 0 0 0 0 !important;
+    margin: 0 0 0 0;
+    overflow: hidden;
+  }
+
+  .topnav-li-hamburger {
+    margin: 0 0 0 0 !important;
+    font-size: 22px !important;
+  }
+
+  .topnav-li-hamburger-active {
+    margin: 0 0 0 0 !important;
+    font-size: 22px !important;
   }
 }
 
@@ -272,7 +316,7 @@ a {
   .hamburger-menu-line {
     height: 5px;
     width: 100%;
-    background-color: #181818;
+    background-color: #444444;
     transition: background-color 0.1s linear;
   }
 
@@ -327,35 +371,37 @@ a {
     transition: width 0.1s linear;
   }
 
-  .topnav-hamburger-toggled {
-    display: inline-flex;
-    position: fixed;
-    width: 180px;
-    height: 390px;
-    right: 0;
-    top: 85px;
-    display: inline-flex;
-    background-color: #000000;
-    overflow: none;
-    transition: height 0.1s linear;
-  }
-
   .topnav-hamburger-untoggled {
     display: inline-flex;
     position: fixed;
-    width: 180px;
+    width: 100%;
     height: 0px;
     right: 0;
     top: 85px;
     display: inline-flex;
-    background-color: #000000;
-    overflow: scroll;
+    background-color: #000000c7;
+    overflow: none;
     transition: height 0.1s linear;
   }
  
+  .topnav-hamburger-toggled {
+    display: inline-flex;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    right: 0;
+    top: 85px;
+    display: inline-flex;
+    background-color: #000000c7;
+    overflow: none;
+    transition: height 0.1s linear;
+    z-index: -1;
+  }
+
   .topnav-li-hamburger {
     height: 50px;
     width: 100%;
+    padding: 0 0 0 0;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -364,26 +410,71 @@ a {
   .topnav-li-hamburger-active {
     height: 50px;
     width: 100%;
+    padding: 0 0 0 0;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+  }
+
+  .topnav-li-hamburger a {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .topnav-li-hamburger-active a {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: #ffffff66;
+    text-decoration: line-through;
   }
 
   .topnav-li-hamburger a:hover {
     color: #ffffff66
   }
 
-  .topnav-li-hamburger-active a {
-    color: #ffffff66;
-    text-decoration: line-through;
+  .topnav-hamburger-toggled li {
+    font-size: 36px;
+    letter-spacing: 3px;
+    width: 40%;
+    margin: 30px 0 0 0;
   }
+
+  .topnav-hamburger-untoggled li {
+    font-size: 36px;
+    letter-spacing: 3px;
+    width: 40%;
+    margin: 30px 0 0 0;
+  }
+
 
   .topnav-hamburger-toggled ul {
     height: 100%;
-    width: 180px;
-    padding: 0;
+    width: 100%;
+    margin: 0 0 0 0;
+    padding: 5% 0 0 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: padding 0.1s linear;
+  }
+
+  .topnav-hamburger-untoggled ul {
+    height: 100%;
+    width: 100%;
+    padding: 0 0 0 0;
     margin: 0 0 0 0;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: padding 0.1s linear;
   }
 
 }
