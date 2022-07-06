@@ -14,7 +14,6 @@
           </ul>
         </div>
         <div class="profile-picture-and-pattern">
-          <ProfilePicturePattern class="profile-picture-pattern"></ProfilePicturePattern>
           <img class="profile-picture" :src="image"/>
         </div>
       </div>
@@ -23,12 +22,9 @@
 
 <script>
 import image from "../../assets/profilePicture.png"
-import ProfilePicturePattern from "../../components/ProfilePicturePattern.vue"
-
 
 export default {
   components: {
-    ProfilePicturePattern,
   },
 
   data() {
@@ -40,21 +36,20 @@ export default {
 </script>
 
 <style scoped>
-
 .main-content {
-  height: 1000px;
+  height: 700px;
   background-color: #FFF;
 }
 
 #header-name {
-  font-size: 64px;
+  font-size: 54px;
   font-family: 'Montserrat', sans-serif;
   margin: 0px;
   color: #212121;
 }
 
 #header-lastname {
-  font-size: 64px;
+  font-size: 54px;
   font-family: 'Montserrat', sans-serif;
   margin: 0 0 0 41px;
   color: #212121;
@@ -65,7 +60,7 @@ export default {
   margin-left: 41px;
   margin-bottom: 0px;
   width: 400px;
-  font-size: 20px;
+  font-size: 16px;
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -76,29 +71,23 @@ export default {
 
 .profile-info {
   display: inline-flex;
-  margin-top: 170px;
+  margin-top: 140px;
   padding-left: 50px;
   padding-right: 50px;
 }
 
 .profile-text {
   display: flex;
-  padding-top: 66px;
+  padding-top: 36px;
   flex-direction: column;
   align-items: flex-start;
 }
 
 .profile-picture {
-  padding-left: 101px;
-  width: 465px;
-  height: 465px;
+  padding-left: 100px;
+  width: 365px;
+  height: 365px;
   z-index: 0;
-}
-
-.profile-picture-pattern {
-  left: -70px;
-  top: -160px;
-  position: absolute;
 }
 
 .profile-picture-and-pattern {
@@ -136,6 +125,10 @@ a:hover { text-decoration: none; color: #00000080; }
 }
 
 @media only screen and (max-width: 1100px) {
+  .main-content {
+    height: 1100px;
+  }
+
   .profile-info {
     display: flex !important;
     flex-direction: column-reverse;
