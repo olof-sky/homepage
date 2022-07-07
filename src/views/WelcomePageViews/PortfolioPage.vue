@@ -28,7 +28,7 @@ export default {
 
   methods: {
     onScroll() {
-      this.windowTop = window.top.scrollY
+      this.windowTop = window.top.scrollY;
     }
   },
 
@@ -48,7 +48,7 @@ export default {
 
 <style scoped>
 .main-content {
-  height: 700px;
+  height: 800px;
   width: 100%;
   display: flex;
   align-items: center;

@@ -162,7 +162,7 @@ textarea::-webkit-scrollbar-thumb {background-color:#babac0;border-radius:16px;b
 
 .email-form-container {
   position: relative;
-  margin: 350px 25% 50% 25%;
+  margin: 300px 25% 50% 25%;
   display: inline-flex;
   flex-direction: column;
   align-content: center;
@@ -198,6 +198,12 @@ textarea::-webkit-scrollbar-thumb {background-color:#babac0;border-radius:16px;b
   display: inline-flex;
   flex-direction: column;
   align-items: center;
+}
+
+@media only screen and (max-width: 1600px) {
+  .email-form-container {
+    margin: 220px 25% 50% 25%;
+  }
 }
 
 @media only screen and (max-width: 1100px) { 

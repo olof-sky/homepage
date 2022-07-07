@@ -32,7 +32,7 @@
           <img class="image" :src="laptopRight"/>
         </div>      
         <div :class="!showLaptop ? 'art-text-container-hidden' : 'art-text-container-shown'">
-          <h1>Hobbyist artist</h1>
+          <h1>Hobby artist</h1>
           <p>As a teenager i had a brief period where i drawed comics. This led me on to try other medias and artforms, one of them being watercolor. 
             The years went and i rarely painted, until the day my wife handed me some paper and encouraged me to bring my old hobby back to life.</p>
         </div>
@@ -49,7 +49,7 @@
                   <ul>
                     <li>Coffee is my breakfast</li>
                     <li>Loves gaming</li>
-                    <li>I like keeping houseplants</li>
+                    <li>Like keeping houseplants</li>
                     <li>Spends to much time infront of screens</li>
                   </ul>
                 <p id="about-btn-text">More about me...</p>
@@ -101,6 +101,8 @@ export default {
       showMobile: false,
       aboutMeToggled: false,
       windowTop: window.top.scrollY,
+      windowHeight: window.innerHeight,
+      windowWidth: window.innerWidth,
     }
   },
 
@@ -149,26 +151,23 @@ export default {
     },
 
     onScroll() {
-      this.windowTop = window.top.scrollY
+      this.windowTop = window.top.scrollY;
+      this.windowHeight = window.innerHeight;
+      this.windowWidth = window.innerWidth;
     }
   },
 
   watch: {
     windowTop() {
-      if (this.windowTop > 500) {
+      if (this.windowTop > 500 || this.windowTop + this.windowHeight > 500 || this.windowWidth < 1100) {
         this.showScreen = true;
       }
-      else {this.showScreen = false}
-
-      if (this.windowTop > 1300) {
+      if (this.windowTop > 1300 || this.windowTop + this.windowHeight > 2700 || this.windowWidth < 1100) {
         this.showLaptop = true;
       }
-      else {this.showLaptop = false}
-
-      if (this.windowTop > 2200) {
+      if (this.windowTop > 2200 || this.windowTop + this.windowHeight > 3600 || this.windowWidth < 1100) {
         this.showMobile = true;
       }
-      else {this.showMobile = false}
     }
   },
 }
@@ -558,9 +557,6 @@ p {
   font-size: 40px;
 }
 
-.mobile-text-container-facts p {
-}
-
 .mobile-text-container-facts ul {
   margin-top: 25px;
   margin-bottom: 45px;
@@ -654,8 +650,86 @@ p {
   font-family: monospace;
 }
 
-@media only screen and (max-width: 1100px) { 
+/* Small screen CSS */
+@media only screen and (max-width: 1600px) {
+
+  h1 {
+    font-size: 33px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  .image {
+    height: 50%;
+    width: 50%;
+  }
+
+  #image-1 {
+    left: 45px;
+    height: 48%;
+  }
+
+  #image-2 {
+    left: 32%;
+    height: 69%;
+  }
+
+  #image-3 {
+    height: 40%;
+  }
   
+  .about-cards {
+    width: 100%;
+  }
+  
+  .about-card {
+    padding: 150px 0 200px 0;
+  }
+  
+  #screen-shown .mac-window-card[data-v-828a76b8] {
+    margin: -250px 0 0 600px;
+    height: 400px;
+  }
+
+  #screen-shown .mac-window-card .code-icon[data-v-828a76b8] {
+    margin: -50px 0 0 84%;
+  }
+
+  #screen-shown .mac-window-card h1 {
+    font-size: 33px;
+  }
+  
+  #screen-shown .mac-window-card p {
+    font-size: 14px;
+  }
+
+  #laptop-shown {
+    margin-right: -14%;
+  }
+
+  #laptop-shown .laptop-art-container {
+    max-width: 820px;
+    margin: -330px 0 0 -150px;
+  }
+
+  #mobile-shown .image {
+    height: 60%;
+    width: 60%;
+  }
+
+  .mobile-text-container-shown {
+    max-width: 700px;
+  }  
+  
+  .mobile-text-container-shown h1{
+    margin-top: 55px;
+  }
+}
+
+/* Mobile screen CSS  */
+@media only screen and (max-width: 1100px) { 
 }
   
 </style>

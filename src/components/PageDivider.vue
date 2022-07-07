@@ -30,10 +30,10 @@ export default {
           pageHeight = 0;
           break;
         case "PORTFOLIO":
-          pageHeight = 1000;
+          pageHeight = 700;
           break;      
         case "CONTACT":
-          pageHeight = 2000;
+          pageHeight = 3950;
           break;
         default:
           pageHeight = 0;
@@ -45,13 +45,13 @@ export default {
       let pageHeight = 0;
       switch(this.message) {
         case "ABOUT":
-          pageHeight = 2000;
+          pageHeight = 3950;
           break;
         case "PORTFOLIO":
-          pageHeight = 3000;
+          pageHeight = 4750;
           break;      
         case "CONTACT":
-          pageHeight = 4000;
+          pageHeight = 6000;
           break;
         default:
           pageHeight = 0;
@@ -92,7 +92,7 @@ export default {
 .divider-top-visible {
   border-top-right-radius: 100px;
   border-top-left-radius: 100px;
-  background-color: #000000;
+  background-color: #282828;
   width: 100%;
   height: 50%;
 }
@@ -107,12 +107,12 @@ export default {
 .divider-bottom-visible {
   border-bottom-right-radius: 100px;
   border-bottom-left-radius: 100px;
-  background-color: #000000;
+  background-color: #282828;
   width: 100%;
   height: 50%;
 }
 .divider-top-visible:hover {
-  background-color: #be9292;
+  background-color: #dbc6c6;
   transition: background-color .1s ease-in-out;
   cursor: pointer;
 }
@@ -150,7 +150,7 @@ p {
     border-radius: 100%;
     height: 100px;
     width: 100px;
-    background-color: #E0826F;
+    background-color: #dbc6c6;
 
 
     justify-content: space-around;
