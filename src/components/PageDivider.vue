@@ -92,7 +92,7 @@ export default {
 .divider-top-visible {
   border-top-right-radius: 100px;
   border-top-left-radius: 100px;
-  background-color: #E0826F;
+  background-color: #000000;
   width: 100%;
   height: 50%;
 }
@@ -107,18 +107,18 @@ export default {
 .divider-bottom-visible {
   border-bottom-right-radius: 100px;
   border-bottom-left-radius: 100px;
-  background-color: #E0826F;
+  background-color: #000000;
   width: 100%;
   height: 50%;
 }
 .divider-top-visible:hover {
-  background-color: #a86355;
+  background-color: #be9292;
   transition: background-color .1s ease-in-out;
   cursor: pointer;
 }
 .divider-bottom-visible:hover {
   visibility: visible;
-  background-color: #a86355;
+  background-color: #dbc6c6;
   transition: background-color .1s ease-in-out;
   cursor: pointer;
 }

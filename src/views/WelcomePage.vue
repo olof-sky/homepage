@@ -49,11 +49,11 @@ body {
 }
 
 .component {
-  box-shadow: 11px 11px 7px 0px rgb(155 155 155 / 20%);
+  box-shadow: 6px 5px 7px 0px rgb(155 155 155 / 20%);
 }
 
 .component-inset {
-  box-shadow: inset 11px -11px 7px 0px rgb(155 155 155 / 20%);
+  box-shadow: inset 6px -5px 7px 0px rgb(155 155 155 / 20%);
 }
 
 @media only screen and (max-width: 1100px) {

@@ -48,7 +48,7 @@ export default {
 
 <style scoped>
 .main-content {
-  height: 1000px;
+  height: 700px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -58,7 +58,7 @@ export default {
 }
 
 h1 {
-  font-size: 64px;
+  font-size: 60px;
   font-weight: 600;
   line-height: 78px;
   font-family: 'Montserrat', sans-serif;
@@ -91,27 +91,29 @@ h1 {
 
 #code-transition:hover {
   margin-left: 50px;
-  font-size: 80px;
+  font-size: 70px;
+  text-decoration-color: #d4c0cf;
   cursor: pointer;
 }
 
 #art-transition:hover {
   margin-right: 10px;
-  font-size: 80px;
+  font-size: 70px;
+  text-decoration-color: #d4c0cf;
   cursor: pointer;
 }
 
 #code-transition {
   margin-left: 60px;
   text-decoration: underline;
-  text-decoration-color: #E0826F;
+  text-decoration-color: #663c5b;
   transition: margin-left .7s ease-in-out;
 }  
 
 #art-transition {
   margin-right: 15px;
   text-decoration: underline;
-  text-decoration-color: #E0826F;
+  text-decoration-color: #663c5b;
   transition: margin-right .7s ease-in-out;
 }
 
@@ -130,7 +132,7 @@ h1 {
 
 #art-code-middle-line {
   height: 200px;
-  width: 9px;
+  width: 6px;
   margin: 80px;
   background-color: #000000;
   overflow-y: hidden;
@@ -138,8 +140,8 @@ h1 {
 }
 
 #art-code-middle-line-transition {
-  height: 400px;
-  width: 9px;
+  height: 350px;
+  width: 6px;
   margin: 80px;
   background-color: #000000;
   transition: height 0.4s linear;
@@ -174,16 +176,10 @@ h1 {
 
   #code-transition {
     margin-left: 40px;
-    text-decoration: underline;
-    text-decoration-color: #E0826F;
-    transition: margin-left .7s ease-in-out;
   }  
 
   #art-transition {
     margin-right: 15px;
-    text-decoration: underline;
-    text-decoration-color: #E0826F;
-    transition: margin-right .7s ease-in-out;
   }
 
   #art-code-middle-line {
