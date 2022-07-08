@@ -1,7 +1,7 @@
 <template>
     <div class="main-content">
       <div class="about-cards">
-        <div class ="about-card" :id="!showScreen ? 'screen-hidden' : 'screen-shown'">
+        <div class ="about-card" :id="!showScreen && windowWidth > 1100 ? 'screen-hidden' : 'screen-shown'">
           <div class="mac-window-card">
             <div class="mac-window-card-header">
               <div class="mac-window-card-header-dots">
@@ -21,24 +21,26 @@
               <h2>&lt;/&gt;</h2>
             </div>
           </div>
-          <img class="image" :src="screenLeft"/>
+          <img class="image" id="screen-left" :src="screenLeft"/>
         </div>      
-        <div class ="about-card" :id="!showLaptop ? 'laptop-hidden' : 'laptop-shown'">
+        <div class ="about-card" :id="!showLaptop && windowWidth > 1100 ? 'laptop-hidden' : 'laptop-shown'">
           <div class="laptop-art-container">
             <img @click="toggleImg('1')" :class="imageOneToggled ? 'image-1-toggled' : 'image-1'" :src="imageOne"/>
             <img @click="toggleImg('2')" :class="imageTwoToggled ? 'image-2-toggled' : 'image-2'" :src="imageTwo"/>
             <img @click="toggleImg('3')" :class="imageThreeToggled ? 'image-3-toggled' : 'image-3'" :src="imageThree"/>
           </div>
-          <img class="image" :src="laptopRight"/>
+          <img class="image" id="laptop-right" :src="laptopRight"/>
         </div>      
-        <div :class="!showLaptop ? 'art-text-container-hidden' : 'art-text-container-shown'">
+        <div :class="!showLaptop && windowWidth > 1100 ? 'art-text-container-hidden' : 'art-text-container-shown'">
           <h1>Hobby artist</h1>
           <p>As a teenager i had a brief period where i drawed comics. This led me on to try other medias and artforms, one of them being watercolor. 
             The years went and i rarely painted, until the day my wife handed me some paper and encouraged me to bring my old hobby back to life.</p>
         </div>
-        <div class="about-card" :id="!showMobile ? 'mobile-hidden' : 'mobile-shown'">
-          <img class="image" :src="mobileLeft"/>
-          <img class="splash" :src="colorSplash"/>
+        <div class="about-card" :id="!showMobile && windowWidth > 1100 ? 'mobile-hidden' : 'mobile-shown'">
+          <div class="mobile-and-splash">
+            <img class="image" id="mobile-left" :src="mobileLeft"/>
+            <img class="splash" :src="colorSplash"/>
+          </div>
           <div :id="aboutMeToggled ? 'facts-large' : 'facts-small'" :class="!showMobile ? 'mobile-text-container-hidden' : 'mobile-text-container-shown'">
             <div class="mobile-text-container-facts">
               <button @click="toggleAboutMeCard" class="mobile-text-container-btn" :id="aboutMeToggled ? 'arrow-left' : 'arrow-right'">
@@ -47,10 +49,11 @@
               <div :id="aboutMeToggled ? 'random-facts-hidden' : 'random-facts-shown'">
                 <h1>Random facts</h1>
                   <ul>
-                    <li>Coffee is my breakfast</li>
-                    <li>Loves gaming</li>
+                    <li>Coffee is breakfast</li>
+                    <li>I love gaming</li>
+                    <li>Design freak</li>
                     <li>Like keeping houseplants</li>
-                    <li>Spends to much time infront of screens</li>
+                    <li>I spend to much time in front of screens</li>
                   </ul>
                 <p id="about-btn-text">More about me...</p>
               </div>
@@ -103,11 +106,17 @@ export default {
       windowTop: window.top.scrollY,
       windowHeight: window.innerHeight,
       windowWidth: window.innerWidth,
+      activeUrl: '',
     }
   },
 
   mounted() {
     window.addEventListener("scroll", this.onScroll)
+    if (window.location.pathname == '/about') {
+      this.showScreen = true;
+      this.showLaptop = true;
+      this.showMobile = true;
+    }
   },
 
   methods: {
@@ -159,13 +168,13 @@ export default {
 
   watch: {
     windowTop() {
-      if (this.windowTop > 500 || this.windowTop + this.windowHeight > 500 || this.windowWidth < 1100) {
+      if (this.windowTop > 500 || this.windowTop + this.windowHeight > 500 || this.windowWidth < 1100 || window.location.pathname == '/about') {
         this.showScreen = true;
       }
-      if (this.windowTop > 1300 || this.windowTop + this.windowHeight > 2700 || this.windowWidth < 1100) {
+      if (this.windowTop > 1300 || this.windowTop + this.windowHeight > 2700 || this.windowWidth < 1100 || window.location.pathname == '/about') {
         this.showLaptop = true;
       }
-      if (this.windowTop > 2200 || this.windowTop + this.windowHeight > 3600 || this.windowWidth < 1100) {
+      if (this.windowTop > 2200 || this.windowTop + this.windowHeight > 3600 || this.windowWidth < 1100 || window.location.pathname == '/about') {
         this.showMobile = true;
       }
     }
@@ -214,10 +223,15 @@ p {
   width: 60%;
 }
 
+.mobile-and-splash {
+  height: 100%;
+  width: 100%;
+}
+
 .splash { 
   position: absolute;
   top: 30px;
-  margin-left: 20px;
+  margin-left: -115px;
 }
 
 
@@ -356,7 +370,7 @@ p {
   left: 200px;
   height: 53%;
   opacity: 66%;
-  box-shadow: 15px 16px 7px 0px rgb(155 155 155 / 20%);
+  box-shadow: 7px 7px 7px 0px rgb(155 155 155 / 20%);
   transition: all 0.3s ease-in-out;
 }
 
@@ -368,7 +382,7 @@ p {
   height: 53%;
   opacity: 66%;
   z-index: 2;
-  box-shadow: 15px 16px 7px 0px rgb(155 155 155 / 20%);
+  box-shadow: 7px 7px 7px 0px rgb(155 155 155 / 20%);
   transition: all 0.3s ease-in-out;
 }
 
@@ -378,6 +392,7 @@ p {
   height: 55%;
   opacity: 100%;
   transition: all 0.3s ease-in-out;
+  box-shadow: 7px 7px 7px 0px rgb(155 155 155 / 20%);
 }
 
 .image-1-toggled {  
@@ -385,11 +400,12 @@ p {
   cursor: pointer;
   transform: rotate(0deg);
   top: 0;
-  left: 10%;
+  left: 40%;
   height: 80vh;
   opacity: 100%;
   z-index: 3;
   transition: all 0.3s ease-in-out;
+  box-shadow: 7px 7px 7px 0px rgb(155 155 155 / 20%);
 }
 
 .image-2 {
@@ -399,7 +415,7 @@ p {
   left: 29%;
   height: 70%;
   z-index: 1;
-  box-shadow: 15px 16px 7px 0px rgb(155 155 155 / 20%);
+  box-shadow: 7px 7px 7px 0px rgb(155 155 155 / 20%);
   transition: all 0.3s ease-in-out;
 }
 
@@ -408,7 +424,7 @@ p {
   cursor: pointer;
   transform: rotate(360deg);
   height: 72%;
-  box-shadow: 15px 16px 7px 0px rgb(155 155 155 / 20%);
+  box-shadow: 7px 7px 7px 0px rgb(155 155 155 / 20%);
   transition: all 0.3s ease-in-out;
 }
 
@@ -417,10 +433,10 @@ p {
   cursor: pointer;
   transform: rotate(360deg);
   top: 0;
-  left: 10%;
+  left: 40%;
   height: 80vh;
   opacity: 100%;
-  box-shadow: 15px 16px 7px 0px rgb(155 155 155 / 20%);
+  box-shadow: 7px 7px 7px 0px rgb(155 155 155 / 20%);
   z-index: 2;
   transition: all 0.3s ease-in-out;
 } 
@@ -432,7 +448,7 @@ p {
   right: 2%;
   height: 0%;
   opacity: 0%;
-  box-shadow: 15px 16px 7px 0px rgb(155 155 155 / 20%);
+  box-shadow: 7px 7px 7px 0px rgb(155 155 155 / 20%);
   transition: all 0.3s ease-in-out;
 }
 
@@ -444,7 +460,7 @@ p {
   height: 50%;
   opacity: 95%;
   z-index: 1;
-  box-shadow: 15px 16px 7px 0px rgb(155 155 155 / 20%);
+  box-shadow: 7px 7px 7px 0px rgb(155 155 155 / 20%);
   transition: all 0.3s ease-in-out;
 }
 
@@ -454,18 +470,20 @@ p {
   height: 58%;
   opacity: 100%;
   transition: all 0.3s ease-in-out;
+  box-shadow: 7px 7px 7px 0px rgb(155 155 155 / 20%);
 }
 
 .image-3-toggled {  
   position: absolute;
   cursor: pointer;
   transform: rotate(360deg);
-  bottom: 0;
   right: 10%;
+  bottom: 0;
   height: 80vh;
   opacity: 100%;
   z-index: 3;
   transition: all 0.3s ease-in-out;
+  box-shadow: 7px 7px 7px 0px rgb(155 155 155 / 20%);
 }
 
 .art-text-container-hidden {
@@ -485,6 +503,8 @@ p {
   border-radius: 0px;
   transition: all 0.3s ease-in-out;
 }
+
+
 /* MOBILE CARD */
 
 #mobile-hidden {
@@ -528,7 +548,7 @@ p {
     margin: -50px 0 0 250px;
     width: 450px;
     border-radius: 8px;
-    background: #fffffff0;
+    background: #f6f6f6f0;
     box-shadow: 0px 3px 7px 0px rgb(155 155 155 / 20%);
     transition: all .3s linear;
 }
@@ -541,11 +561,6 @@ p {
 .mobile-text-container-shown p {
   padding: 10px 10% 20px 10%;
   font-size: 15px;
-}
-
-.mobile-text-container-facts {
-  padding-bottom: 60px;
-  width: 100%;
 }
 
 .mobile-text-container-facts {
@@ -578,11 +593,11 @@ p {
 
 #facts-small {
   width: 400px;
-  transition: all 0.2s linear;
+  transition: all 0s linear;
 }
 
 #random-facts-shown {
-  display: inline-flex;  
+  display: flex;  
   flex-direction: column;
 }
 
@@ -591,7 +606,7 @@ p {
 }
 
 #more-facts-shown {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
 }
 
@@ -666,18 +681,18 @@ p {
     width: 50%;
   }
 
-  #image-1 {
-    left: 45px;
-    height: 48%;
+  .image-1 {
+    left: 56px;
+    height: 45%;
   }
 
-  #image-2 {
-    left: 32%;
-    height: 69%;
+  .image-2 {
+    left: 37%;
+    height: 64%;
   }
 
-  #image-3 {
-    height: 40%;
+  .image-3 {
+    height: 35%;
   }
   
   .about-cards {
@@ -689,12 +704,12 @@ p {
   }
   
   #screen-shown .mac-window-card[data-v-828a76b8] {
-    margin: -250px 0 0 600px;
+    margin: -250px 0 0 550px;
     height: 400px;
   }
 
   #screen-shown .mac-window-card .code-icon[data-v-828a76b8] {
-    margin: -50px 0 0 84%;
+    margin: -8% 0 0 84%;
   }
 
   #screen-shown .mac-window-card h1 {
@@ -729,7 +744,229 @@ p {
 }
 
 /* Mobile screen CSS  */
-@media only screen and (max-width: 1100px) { 
+@media only screen and (max-width: 1100px) {
+  h1 {
+    font-size: 33px;
+  }
+
+  h2 {
+    margin: 0;
+  } 
+
+  p {
+    font-size: 14px;
+  }
+
+  .image {
+    height: 50%;
+    width: 50%;
+  }
+
+  .image-1 {
+    top: 0;
+    left: 50%;
+    height: 35%;
+  }
+
+  .image-2 {
+    top: 15%;
+    left: 0;
+    height: 44%;
+    z-index: 2;
+  }
+
+  .image-3 {
+    left: 37%;
+    right: 0;
+    top: 43%;
+    height: 38%;
+  }
+
+  .image-1:hover {
+    top: 0;
+    left: 50%;
+    height: 35%;
+  }
+
+  .image-2:hover {
+    top: 15%;
+    left: 0;
+    height: 44%;
+    z-index: 2;
+  }
+
+  .image-3:hover {
+    left: 37%;
+    right: 0;
+    top: 43%;
+    height: 38%;
+  }
+
+  .image-1-toggled {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 75%;
+    z-index: 3;
+  } 
+
+  .image-2-toggled {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70%;
+    z-index: 3;
+  } 
+
+  .image-3-toggled {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70%;
+    z-index: 3;
+  } 
+  
+  .about-cards {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 150px;
+    margin-bottom: 200px;
+    width: 100%;
+  }
+  
+  .about-card {
+    padding: 50px 0 50px 0;
+    align-self: center;
+  }
+  
+  #screen-left {
+    position: relative;
+    bottom: 100px;
+    right: 35%;
+    max-height: 450px;
+  }
+
+  #screen-shown {
+    align-self: center;
+    max-width: 375px;
+  }
+
+  #screen-shown .mac-window-card[data-v-828a76b8] {
+    position: relative;
+    z-index: 1;
+    margin: 0 5% 0 5%;
+    padding-bottom: 40px;
+    width: 90%;
+    height: 100%;
+    background: #ffffffeb;
+  }
+
+  #screen-shown .mac-window-card .code-icon[data-v-828a76b8] {
+    right: 0;
+    bottom: -60px;
+    position: absolute;
+  }
+
+  #screen-shown .mac-window-card h1 {
+    font-size: 33px;
+  }
+  
+  #screen-shown .mac-window-card p {
+    font-size: 14px;
+  }
+
+  #laptop-shown {
+    align-self: center;
+    max-width: 375px;
+    margin: 0;
+  }
+
+  #laptop-right {
+    position: relative;
+    bottom: 200px;
+    left: 15%;
+    height: 65%;
+    width: 65%;
+  }
+
+  #laptop-shown .laptop-art-container {
+    position: relative;
+    z-index: 1;
+    margin: 0 5% 0 5%;
+    padding-bottom: 40px;
+  }
+
+ .art-text-container-shown {
+    align-self: center;
+    text-align: left;
+    padding: 0 0 0 0;
+    margin-top: -160px;
+    width: 70%;
+  }
+
+  #mobile-shown {
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+    width: 90%;
+    max-width: 100%;
+    margin: 220px 0 270px 0;
+  }
+  
+  .mobile-and-splash {
+    display: flex;
+    position: relative;
+    max-width: 300px;
+    margin-top: -56px;
+    margin-right: 56px;
+  }
+
+  .splash {
+    width: 290px;    
+    top: -18px;
+    margin-left: 10px;
+  }
+
+  #mobile-left {
+    width: 70px !important;
+  }
+
+  #facts-small {
+    position: absolute;
+    margin: 0 0 19px 0;
+    max-width: 75%;
+  }
+
+  #facts-large {
+    position: relative !important;
+    margin: -130px 0 -250px 0;
+    max-width: 75%;
+  }
+
+  .mobile-text-container-shown {
+    padding: 20px;
+    background: #ffffffb8;
+  }  
+  
+  .mobile-text-container-shown h1{
+    margin: 25px 0 0 0;
+    font-size: 33px;
+  }
+
+  .mobile-text-container-shown p{
+    font-size: 14px;
+  }
+
+  #arrow-right {
+    transform: rotate(90deg);
+  }
+
+  #arrow-left {
+    transform: rotate(270deg);
+  }
 }
   
 </style>
