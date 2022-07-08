@@ -126,7 +126,7 @@ a:hover { text-decoration: none; color: #00000080; }
 
 @media only screen and (max-width: 1100px) {
   .main-content {
-    height: 1100px;
+    height: 1000px;
   }
 
   .profile-info {

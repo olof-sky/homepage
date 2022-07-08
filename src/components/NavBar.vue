@@ -70,10 +70,10 @@ export default {
       let pageHeight = 0;
       switch(linkName) {         
         case "about":
-          pageHeight = 1000;
+          pageHeight = 700;
           break;
         case "contact":
-          pageHeight = 3000;
+          pageHeight = 4750;
           break;
         default:
           pageHeight = 0;
