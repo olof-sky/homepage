@@ -1,35 +1,35 @@
 <template>
   <div class="main-content">
-    <div class="background">
-    <div class="email-form-container">
-      <form action="http://localhost:3000/api/contact/send" id="contact-form" method="post">
-        <div class="contact-label-card">
-          <fa class="contact-label-card-icon" :icon="[ 'fa', 'fa-envelope' ]"/>
-          <div class="email-form-input">
-              <input required type="email" id="email" name="email" aria-describedby="email" placeholder="E-mail*">
+    <div class="container">
+      <div class="email-form-container">
+        <form action="http://localhost:3000/api/contact/send" id="contact-form" method="post">
+          <div class="contact-label-card">
+            <fa class="contact-label-card-icon" :icon="[ 'fa', 'fa-envelope' ]"/>
+            <div class="email-form-input">
+                <input required type="email" id="email" name="email" aria-describedby="email" placeholder="E-mail*">
+            </div>
           </div>
-        </div>
-        <div class="contact-label-card">
-          <fa class="contact-label-card-icon" :icon="[ 'fa', 'fa-user' ]"/>
-          <div class="email-form-input">
-              <input required type="text" id="name" name="name" aria-describedby="name" placeholder="Name*">
+          <div class="contact-label-card">
+            <fa class="contact-label-card-icon" :icon="[ 'fa', 'fa-user' ]"/>
+            <div class="email-form-input">
+                <input required type="text" id="name" name="name" aria-describedby="name" placeholder="Name*">
+            </div>
           </div>
-        </div>
-        <div class="contact-label-card">
-          <fa class="contact-label-card-icon" :icon="[ 'fa', 'fa-thumbtack' ]"/>
-          <div class="email-form-input">
-              <input required type="subject" id="subject" name="subject" aria-describedby="subject" placeholder="Subject*">
+          <div class="contact-label-card">
+            <fa class="contact-label-card-icon" :icon="[ 'fa', 'fa-thumbtack' ]"/>
+            <div class="email-form-input">
+                <input required type="subject" id="subject" name="subject" aria-describedby="subject" placeholder="Subject*">
+            </div>
           </div>
-        </div>
-        <div class="contact-label-card">
-          <fa class="contact-label-card-icon" :icon="[ 'fa', 'fa-comment-dots' ]"/>
-          <div class="email-form-input">
-            <textarea required type="text" rows="4" cols="50" id="text" name="text" aria-describedby="text" placeholder="Write me a message..."/>
+          <div class="contact-label-card">
+            <fa class="contact-label-card-icon" :icon="[ 'fa', 'fa-comment-dots' ]"/>
+            <div class="email-form-input">
+              <textarea required type="text" rows="4" cols="50" id="text" name="text" aria-describedby="text" placeholder="Write me a message..."/>
+            </div>
           </div>
-        </div>
-        <button class="submit-button" type="submit"><fa class="submit-button-icon" :icon="[ 'fa', 'fa-paper-plane' ]"/></button>
-      </form>
-    </div>
+          <button class="submit-button" type="submit"><fa class="submit-button-icon" :icon="[ 'fa', 'fa-paper-plane' ]"/></button>
+        </form>
+      </div>
     </div>
   </div>
 </template>
@@ -58,7 +58,6 @@ export default {
   height: 100%;
   display: block;
   position: relative;
-
 }
 
 .main-content::after {
@@ -75,6 +74,7 @@ export default {
   right: 0;
   position: absolute;
   z-index: -1;
+  margin-bottom: -300px;
 }
 
 input {
@@ -161,8 +161,7 @@ textarea::-webkit-scrollbar-thumb {background-color:#babac0;border-radius:16px;b
 }
 
 .email-form-container {
-  position: relative;
-  margin: 300px 25% 50% 25%;
+  margin-top: 150px;
   display: inline-flex;
   flex-direction: column;
   align-content: center;

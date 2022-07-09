@@ -43,8 +43,8 @@
           </div>
           <div :id="aboutMeToggled ? 'facts-large' : 'facts-small'" :class="!showMobile ? 'mobile-text-container-hidden' : 'mobile-text-container-shown'">
             <div class="mobile-text-container-facts">
-              <button @click="toggleAboutMeCard" class="mobile-text-container-btn" :id="aboutMeToggled ? 'arrow-left' : 'arrow-right'">
-                <fa class="mobile-text-container-btn-icon" :icon="[ 'fa', 'fa-arrow-right' ]"/>
+              <button @click="toggleAboutMeCard" class="mobile-text-container-btn">
+                <fa class="mobile-text-container-btn-icon" :id="aboutMeToggled ? 'arrow-left' : 'arrow-right'" :icon="[ 'fa', 'fa-arrow-right' ]"/>
               </button>
               <div :id="aboutMeToggled ? 'random-facts-hidden' : 'random-facts-shown'">
                 <h1>Random facts</h1>
@@ -184,8 +184,8 @@ export default {
 
 <style scoped>
 .main-content {
-  height: 100%;
   width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -491,6 +491,7 @@ p {
   padding: 20px;
   opacity: 0;
   width: 30%;
+  max-width: 450px;
   transition: all 0.3s ease-in-out;
 }
 
@@ -499,6 +500,7 @@ p {
   padding: 30px 50px 70px 50px;
   opacity: 100%;
   width: 30%;
+  max-width: 450px;
   background: #f6f6f652;    
   border-radius: 0px;
   transition: all 0.3s ease-in-out;
@@ -625,6 +627,7 @@ p {
   border-radius: 100%;
   box-shadow: 1px 2px 3px 0px rgb(0 0 0 / 10%);
   border-style: none;
+  transition: all 0.1s ease-in-out;
 }
 
 #arrow-left {
@@ -639,9 +642,10 @@ p {
 
 .mobile-text-container-btn:hover {
   cursor: pointer;
-  width: 72px;
-  height: 72px;
+  width: 70px;
+  height: 70px;
   background: #bfbdbd;
+  transition: all 0.1s ease-in-out;
 }
 
 .mobile-text-container-btn-icon {
@@ -779,7 +783,7 @@ p {
     left: 37%;
     right: 0;
     top: 43%;
-    height: 38%;
+    height: 35%;
   }
 
   .image-1:hover {
@@ -799,7 +803,7 @@ p {
     left: 37%;
     right: 0;
     top: 43%;
-    height: 38%;
+    height: 36%;
   }
 
   .image-1-toggled {
@@ -807,7 +811,7 @@ p {
     top: 0;
     left: 0;
     right: 0;
-    height: 75%;
+    height: 65%;
     z-index: 3;
   } 
 
@@ -816,7 +820,7 @@ p {
     top: 0;
     left: 0;
     right: 0;
-    height: 70%;
+    height: 69%;
     z-index: 3;
   } 
 
@@ -825,7 +829,7 @@ p {
     top: 0;
     left: 0;
     right: 0;
-    height: 70%;
+    height: 65%;
     z-index: 3;
   } 
   
@@ -844,21 +848,21 @@ p {
   
   #screen-left {
     position: relative;
-    bottom: 100px;
+    bottom: 80px;
     right: 35%;
-    max-height: 450px;
+    max-width: 200px;
   }
 
   #screen-shown {
     align-self: center;
-    max-width: 375px;
+    max-width: 90%;
   }
 
   #screen-shown .mac-window-card[data-v-828a76b8] {
     position: relative;
     z-index: 1;
     margin: 0 5% 0 5%;
-    padding-bottom: 40px;
+    padding-bottom: 50px;
     width: 90%;
     height: 100%;
     background: #ffffffeb;
@@ -866,7 +870,7 @@ p {
 
   #screen-shown .mac-window-card .code-icon[data-v-828a76b8] {
     right: 0;
-    bottom: -60px;
+    bottom: -50px;
     position: absolute;
   }
 
@@ -880,7 +884,7 @@ p {
 
   #laptop-shown {
     align-self: center;
-    max-width: 375px;
+    max-width: 90%;
     margin: 0;
   }
 
@@ -890,6 +894,7 @@ p {
     left: 15%;
     height: 65%;
     width: 65%;
+    max-width: 500px;
   }
 
   #laptop-shown .laptop-art-container {

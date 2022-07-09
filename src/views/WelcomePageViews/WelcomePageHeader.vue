@@ -37,6 +37,8 @@ export default {
 
 <style scoped>
 .main-content {
+  position: relative;
+  z-index: -1;
   height: 700px;
   background-color: #FFF;
 }

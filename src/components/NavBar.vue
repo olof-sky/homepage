@@ -96,7 +96,7 @@ export default {
   width: 100%;
   height: 86px;
   background-color: #000000;
-  box-shadow: 0px 0px 14px 6px #9b9b9b;
+  box-shadow: 0px 0px 14px 6px #00000073;
 }
 
 .hamburger-menu-button-untoggled {
