@@ -6,7 +6,7 @@
     <PageDivider class="page-divider" :message="'PORTFOLIO'"></PageDivider>
     <PortfolioPage class="component"></PortfolioPage>
     <PageDivider class="page-divider" :message="'CONTACT'"></PageDivider>
-    <ContactPage class="component"></ContactPage>
+    <ContactPage class="contact-component"></ContactPage>
   </div>
 </template>
 
