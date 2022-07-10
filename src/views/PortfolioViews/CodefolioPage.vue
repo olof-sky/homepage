@@ -1,25 +1,66 @@
 <template>
   <div class="main-content">
-    <div class="project-container">
-      <img class="laptop" :src="codefolioLaptop"/>
-    <div class="slider-container">
-      <SlideTest/>
-    </div>
-      <button @click="check" class="mobile-text-container-btn">
-        <fa class="mobile-text-container-btn-icon" :id="moreInfoToggled ? 'arrow-left' : 'arrow-right'" :icon="[ 'fa', 'fa-arrow-right' ]"/>
-      </button>
-      <div class="check-out-more-text">Toggle info</div>
-      <div class="mac-window-card">
-        <div class="mac-window-card-header">
-          <div class="mac-window-card-header-dots">
-            <div class="mac-window-card-header-dot"></div>
-            <div class="mac-window-card-header-dot"></div>
-            <div class="mac-window-card-header-dot"></div>
+    <div class="info-container">
+      <div :class="moreInfoToggled ? 'info-container-card' : 'info-container-card-hidden'">
+        <div v-if="showFragContent" class="frag-content">
+          <img class="info-container-card-header-img" :src="fragHeader"/>
+          <div class="info-container-card-container">
+            <div class="info-container-card-scrollable-div">
+              <div class ="info-container-card-scrollable-div-content">
+              <h1>Frag calculator</h1>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus mollitia tempore deleniti culpa adipisci, temporibus magnam quam repellat et optio non ex, suscipit laboriosam assumenda. Corrupti veritatis laborum reiciendis! Deleniti.</p>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus mollitia tempore deleniti culpa adipisci, temporibus magnam quam repellat et optio non ex, suscipit laboriosam assumenda. Corrupti veritatis laborum reiciendis! Deleniti.</p>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus mollitia tempore deleniti culpa adipisci, temporibus magnam quam repellat et optio non ex, suscipit laboriosam assumenda. Corrupti veritatis laborum reiciendis! Deleniti.</p>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus mollitia tempore deleniti culpa adipisci, temporibus magnam quam repellat et optio non ex, suscipit laboriosam assumenda. Corrupti veritatis laborum reiciendis! Deleniti.</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="mac-window-card-text">
-          <h1>Info..</h1>
+        <div v-if="showAfasiaContent" class="afasia-content">
+          <img class="info-container-card-header-img" :src="fragHeader"/>
+          <div class="info-container-card-container">
+            <div class="info-container-card-scrollable-div">
+              <div class ="info-container-card-scrollable-div-content">
+              <h1>AFASIA CONTENT</h1>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus mollitia tempore deleniti culpa adipisci, temporibus magnam quam repellat et optio non ex, suscipit laboriosam assumenda. Corrupti veritatis laborum reiciendis! Deleniti.</p>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus mollitia tempore deleniti culpa adipisci, temporibus magnam quam repellat et optio non ex, suscipit laboriosam assumenda. Corrupti veritatis laborum reiciendis! Deleniti.</p>
+              </div>
+            </div>
+          </div>
         </div>
+        <div v-if="showWebscraperContent" class="webscraper-content">
+          <img class="info-container-card-header-img" :src="fragHeader"/>
+          <div class="info-container-card-container">
+            <div class="info-container-card-scrollable-div">
+              <div class ="info-container-card-scrollable-div-content">
+              // WEBSCRAPER CONTENT
+              </div>
+            </div>
+          </div>
+        </div>
+        <div v-if="showMoreComingContent" class="more-coming-content">
+          <img class="info-container-card-header-img" :src="fragHeader"/>
+          <div class="info-container-card-container">
+            <div class="info-container-card-scrollable-div">
+              <div class ="info-container-card-scrollable-div-content">
+              // MORE COMING CONTENT
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div :class="moreInfoToggled ? 'button-and-text-toggled' : 'button-and-text-untoggled'">
+        <button @click="toggleInfo" class="info-container-btn">
+          <fa class="info-container-btn-icon" :id="moreInfoToggled ? 'arrow-up' : 'arrow-down'" :icon="[ 'fa', 'fa-arrow-right' ]"/>
+        </button>
+        <div v-if="!moreInfoToggled" class="check-out-more-text">Show</div>
+        <div v-if="moreInfoToggled" class="check-out-more-text">Hide</div>
+      </div>
+    </div>
+    <div class="project-container">
+      <img class="laptop" :src="codefolioLaptop"/>
+      <div class="slider-container">
+        <SlideTest @scrolling="getContent()"/>
       </div>
     </div>
   </div>
@@ -30,10 +71,10 @@ import SlideTest from "../../components/CodefolioProjects/ProjectSlide.vue"
 import CodefolioLaptop from "../../assets/codefolio/CodefolioLaptop.png"
 import MacWindow from "../../assets/codefolio/MacWindow.png"
 import FragContent from "../../assets/codefolio/FragCalculator.png"
-import Webscraper from "../../assets/codefolio/Webscraper.png"
+import FragHeader from "../../assets/codefolio/FragCalculatorHeader.png"
+import WebscraperContent from "../../assets/codefolio/Webscraper.png"
 import AfasiaContent from "../../assets/codefolio/Afasia.png"
-import MoreComing from "../../assets/codefolio/MoreComing.png"
-
+import MoreComingContent from "../../assets/codefolio/MoreComing.png"
 export default {
   components: {
     SlideTest,
@@ -44,20 +85,37 @@ export default {
       codefolioLaptop: CodefolioLaptop,
       macWindow: MacWindow,
       projectCardContent: [
-        Webscraper,
+        WebscraperContent,
         FragContent,
         AfasiaContent,
-        MoreComing,
+        MoreComingContent,
       ],
-      moreInfoToggled: false,
+      fragHeader: FragHeader,
+      moreInfoToggled: true,
+      showFragContent: false,
+      showAfasiaContent: false,
+      showWebscraperContent: false,
+      showMoreComingContent: false,
     }
   },
 
+  mounted() {
+    this.getContent();
+  },
+
   methods: {
-    check() {
-      if (this.$el.querySelector('.carousel__slide--active > .carousel__item').id == 'FragCard') {
-        console.log("UES");
-      }
+    getContent() {
+      // Re-render component on $emit
+      this.$nextTick(() => {
+        this.showFragContent = this.$el.querySelector('.carousel__slide--active > .carousel__item').id == 'FragCard';
+        this.showAfasiaContent = this.$el.querySelector('.carousel__slide--active > .carousel__item').id == 'AfasiaCard';
+        this.showWebscraperContent = this.$el.querySelector('.carousel__slide--active > .carousel__item').id == 'WebscraperCard';
+        this.showMoreComingContent = this.$el.querySelector('.carousel__slide--active > .carousel__item').id == 'MoreComingCard';
+      });
+    },
+
+    toggleInfo() {
+      this.getContent();
       if (this.moreInfoToggled == true) {
         this.moreInfoToggled = false;
       } else this.moreInfoToggled = true;
@@ -72,85 +130,23 @@ export default {
   height: 100%;
   display: flex;
   justify-content: center;
-  
-}
-
-h1 {
-  margin: 0;
-  padding: 10px 10px 10px 10px;
-  font-size: 90px;
-  font-family: sans-serif;
-}
-
-.mac-window-card {
-  display: none;
-  top: 585px;
-  position: absolute;
-  width: 40%;
-  max-width: 600px;
-  height: 200px;
-  border-radius: 8px;
-  box-shadow: 0px 3px 7px 0px rgb(155 155 155 / 20%);
-  background: #ffffff52;
-  transition: all .3s linear;
-}
-
-.mac-window-card-header {
-  display: inline-flex;
-  width: 100%;
-  height: 40px;
-  border-radius: 8px 8px 0 0;
-  background: #00000033;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
 }
 
-.mac-window-card-header-dots {
-  display: flex;
-  margin-left: 10px;
-}
-
-.mac-window-card-header-dot {
-  margin-left: 10px;
-  width: 10px;
-  height: 10px;
-  border-radius: 100%;
-  background: white;
-}
-
-.mac-window-card h1 {
-  font-size: 40px;
-  margin: 25px 0 0 0;
-  padding: 0 60px 0 60px;
-  transition: all 0.1s linear;
-}
-
-.mac-window-card p {
-  padding: 0 60px 0 60px;
-  left: 50%;
-  color: rgba(33, 33, 33, 0.75);
-  transition: all 0.1s linear;
-}
-
-.mac-window-card .code-icon {
-    margin: -8% 0 0 84%;
-    font-size: 60px;
-    transition: all 0.1s linear;
-}
-
-.slider-container {
-  width: 90%;
-  margin-bottom: 20px;
-}
-
 .project-container {
-  height: 800px;
-  margin-bottom: 700px;
+  margin: 200px 0 120px 0;
   position: relative;
   display: inline-flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+
+.slider-container {
+  width: 90%;
+  max-width: 1800px;
+  margin-bottom: 20px;
 }
 
 .laptop {
@@ -160,38 +156,107 @@ h1 {
   -o-user-select: none;  
   user-select: none;
   position: absolute;
-  width: 800px;
+  width: 40%;
   margin-top: 50px;
 }
 
-.mac-window {
+.info-container {
   position: absolute;
   width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.mac-window-content {
-  margin-top: 15px;
+.info-container-card {
+  position: relative;
+  opacity: 100%;
+  margin: 90px 0 0 0;
+  width: 60%;
+  max-width: 1100px;
+  height: 700px;
+  border-radius: 8px;
+  box-shadow: 0px 3px 7px 0px rgb(155 155 155 / 20%);
+  background: #fffffff5;
+  transition: all .1s linear;
+  z-index: 1;
+}
+
+.info-container-card-hidden {
+  position: relative;
+  opacity: 0;
+  margin: 0 0 0 0;
+  width: 60%;
+  max-width: 1100px;
+  height: 700px;
+  border-radius: 8px;
+  box-shadow: 0px 3px 7px 0px rgb(155 155 155 / 20%);
+  transition: all .1s linear;
+  z-index: -1;
+}
+
+.info-container-card-header-img {
+  display: inline-flex;
   width: 100%;
+  border-radius: 8px 8px 0 0;
+  flex-direction: row;
+  align-items: center;
 }
 
-.check-out-more-text {
+.info-container-card-container {
+  height: 500px;
+  position: relative;
+}
+
+.info-container-card-scrollable-div {
+  max-height: 500px;
+  overflow: auto;
+  border:1px solid red;
+}
+
+.info-container-card-scrollable-div-content {
+  padding: 5px;
+  border:1px solid yellow;
+}
+
+.info-container-card h1 {
+  font-size: 30px;
+  font-family: 'Montserrat', sans-serif;
+  color: #212121;
+  margin: 25px 0 0 0;
+  padding: 0 0px 0 60px;
+  transition: all 0.1s linear;
+}
+
+.info-container-card p {
+  padding: 0 0px 0 0px;
+  left: 50%;
+  color: rgba(33, 33, 33, 0.75);
+  transition: all 0.1s linear;
+}
+
+.info-container-card .code-icon {
+  margin: -8% 0 0 84%;
+  font-size: 60px;
+  transition: all 0.1s linear;
+}
+
+.button-and-text-toggled {
+  position: relative;
+  margin-top: -30px;
+  transition: all 0.3s ease-in-out;
+  z-index: 1;
+}
+
+.button-and-text-untoggled {
   position: absolute;
-  bottom: 4px;
+  bottom: -50px;
+  transition: all 0.3s ease-in-out;
+  z-index: 1;
 }
 
-#arrow-left {
-  transform: rotate(-90deg);
-  transition: all 0.5s ease-in-out;
-}
-
-#arrow-right {
-  transform: rotate(90deg);
-  transition: all 0.5s ease-in-out;
-}
-
-.mobile-text-container-btn {
-  position: absolute;
-  bottom: 45px;
+.info-container-btn {
   width: 70px;
   height: 70px;
   border-radius: 100%;
@@ -200,7 +265,12 @@ h1 {
   transition: all 0.1s ease-in-out;
 }
 
-.mobile-text-container-btn:hover {
+.check-out-more-text {
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 14px;
+}
+
+.info-container-btn:hover {
   cursor: pointer;
   width: 70px;
   height: 70px;
@@ -208,14 +278,24 @@ h1 {
   transition: all 0.1s ease-in-out;
 }
 
-.mobile-text-container-btn-icon {
+.info-container-btn-icon {
   color: #a7a7a7;
   font-size: 20px;
 }
 
-.mobile-text-container-btn-icon {
+.info-container-btn-icon {
   color: #a7a7a7;
   font-size: 20px;
+}
+
+#arrow-up {
+  transform: rotate(-90deg);
+  transition: all 0.5s ease-in-out;
+}
+
+#arrow-down {
+  transform: rotate(90deg);
+  transition: all 0.5s ease-in-out;
 }
 
 @media only screen and (max-width: 1100px) { 
