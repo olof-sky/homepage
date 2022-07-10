@@ -1,6 +1,7 @@
 <template>
+
 <div class="main-content">
-<button @click="scrollLeft" class="scroll-btn" id="scroll-left"><h1>&lt;</h1></button>
+<button @click="scrollLeft" class="scroll-btn" id="scroll-left"><h1>&lt;&nbsp;</h1></button>
   <Carousel ref="myCarousel" :settings="settings">
     <Slide v-for="slide in componentList.length" :key="slide">
       <component :id="this.componentList[slide - 1]" class="carousel__item" v-bind:is="componentList[slide - 1]"></component>
@@ -50,22 +51,15 @@ export default defineComponent({
     WebscraperCard,
   },
 
-  events: {
-
-  },
-
-
   methods: {
-    console() {
-      console.log("hej");
-    },
-
     scrollLeft() {
       this.$refs.myCarousel.prev();
+      this.$emit('scrolling');
     },
 
     scrollRight() {
       this.$refs.myCarousel.next();
+      this.$emit('scrolling');
     }
   }
 });
@@ -81,23 +75,24 @@ export default defineComponent({
 h1 {
   margin: 0;
   padding: 10px 10px 10px 10px;
-  font-size: 90px;
-  font-family: sans-serif;
+  font-size: 85px;
+  font-family: 'Gothic A1', sans-serif;
 }
 
 .main-content {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: row !important;
+    align-items: center;
 }
 
 .scroll-btn {
+  align-items: center;
   -moz-user-select: none;  
   -webkit-user-select: none;  
   -ms-user-select: none;  
   -o-user-select: none;  
   user-select: none;
-  position: relative;
   display: flex;
   margin: 0;
   padding: 0;
@@ -141,7 +136,7 @@ h1 {
 .carousel__slide--active > .carousel__item {
   position: absolute;
   transform: scale(1);
-  opacity: 0.9;
+  opacity: 1;
 }
 .carousel__slide--active:hover {
   cursor: pointer;
