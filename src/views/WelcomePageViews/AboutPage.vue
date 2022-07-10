@@ -316,9 +316,10 @@ p {
 }
 
 #screen-shown .mac-window-card .code-icon {
-    margin: -8% 0 0 84%;
-    font-size: 60px;
+    margin: -3% 0 0 84%;
+    font-size: 45px;
     transition: all 0.1s linear;
+    font-family: 'Gothic A1', sans-serif;
 }
 
 
@@ -713,7 +714,7 @@ p {
   }
 
   #screen-shown .mac-window-card .code-icon[data-v-828a76b8] {
-    margin: -8% 0 0 84%;
+    margin: -2% 0 0 84%;
   }
 
   #screen-shown .mac-window-card h1 {
