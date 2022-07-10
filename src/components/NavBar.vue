@@ -8,7 +8,7 @@
         </div>
         <div class="topnav">
           <ul>
-            <li :class="activeUrl == '/about' ? 'topnav-li-active' : 'topnav-li'"><router-link @click="scrollIfWelcomePage('about')" to="/about">about</router-link></li>
+            <li :class="activeUrl == '/' ? 'topnav-li-active' : 'topnav-li'"><router-link @click="scrollIfWelcomePage('about')" to="/">about</router-link></li>
             <li :class="activeUrl == '/artfolio' ? 'topnav-li-active' : 'topnav-li'"><router-link to="/artfolio">artfolio</router-link></li>
             <li :class="activeUrl == '/codefolio' ? 'topnav-li-active' : 'topnav-li'"><router-link to="/codefolio">codefolio</router-link></li>
             <li :class="activeUrl == '/github' ? 'topnav-li-active' : 'topnav-li'"><router-link to="/github">github</router-link></li>
@@ -130,7 +130,7 @@ export default {
   list-style:none;
   float: right;
   height: 50px;
-  margin-top: 15px;
+  margin-top: 17px;
   margin-right: 10%;
 }
 

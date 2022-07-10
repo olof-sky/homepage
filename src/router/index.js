@@ -4,7 +4,7 @@ import WelcomePage from "@/views/WelcomePage.vue";
 import ContactPage from "@/views/ContactViews/ContactPage.vue";
 import ContactMessageSent from "@/views/ContactViews/ContactMessageSent.vue";
 
-import AboutPage from "@/views/WelcomePageViews/AboutPage.vue";
+// import AboutPage from "@/views/WelcomePageViews/AboutPage.vue";
 
 import CodefolioPage from "@/views/PortfolioViews/CodefolioPage.vue";
 import ArtfolioPage from "@/views/PortfolioViews/ArtfolioPage.vue";
@@ -16,11 +16,11 @@ const routes = [
     component: WelcomePage,
   },
 
-  {
-    path: "/about",
-    name: "about",
-    component: AboutPage,
-  },
+  // {
+  //   path: "/about",
+  //   name: "about",
+  //   component: AboutPage,
+  // },
 
   {
     path: "/artfolio",
