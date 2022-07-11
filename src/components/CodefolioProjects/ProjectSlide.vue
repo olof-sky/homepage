@@ -3,11 +3,9 @@
 <div class="main-content">
 <button @click="scrollLeft" class="scroll-btn" id="scroll-left"><h1>&lt;&nbsp;</h1></button>
   <Carousel ref="myCarousel" :settings="settings">
-    <Slide v-for="slide in componentList.length" :key="slide">
+    <Slide @click="toggleSwitch" @touchdown="toggleSwitch" v-for="slide in componentList.length" :key="slide">
       <component :id="this.componentList[slide - 1]" class="carousel__item" v-bind:is="componentList[slide - 1]"></component>
     </Slide>
-    <Pagination/>
-    <Navigation />
   </Carousel>
   <button @click="scrollRight" class="scroll-btn" id="carousel__next"><h1>/&gt;</h1></button>
   </div>
@@ -25,10 +23,25 @@ import WebscraperCard from './ProjectCards/WebscraperCard.vue'
 import 'vue3-carousel/dist/carousel.css';
 
 export default defineComponent({
+  created() {
+    window.addEventListener("resize", this.onResize);
+    window.addEventListener("load", this.changeCarouselWidth)
+  },
+
+  mounted() {
+    this.changeCarouselWidth();
+  },
+
+  unmounted() {
+    window.removeEventListener("resize", this.onResize);
+    window.removeEventListener("load", this.changeCarouselWidth);
+  },
+
   data() {
     return {
+      windowWidth: window.innerWidth,
       settings: {
-        itemsToShow: "3.1",
+        itemsToShow: "",
         wrapAround: "true",
       },
       componentList: [
@@ -51,7 +64,42 @@ export default defineComponent({
     WebscraperCard,
   },
 
+  watch: {
+    windowWidth() {
+      if (this.windowWidth < 1100) {
+        this.$nextTick(() => {
+          this.settings.itemsToShow = "1.7";
+          this.$refs.myCarousel.restartCarousel();
+        });
+      }
+      if (this.windowWidth > 1100) {
+        this.$nextTick(() => {
+          this.settings.itemsToShow = "3.1";
+          this.$refs.myCarousel.restartCarousel();
+        });
+      }
+    }
+  },
+
   methods: {
+    onResize() {
+      this.windowWidth = window.innerWidth;
+    },
+
+    changeCarouselWidth() {
+      if (this.windowWidth < 1100) {
+        this.settings.itemsToShow = "1.7";
+      }
+      else {
+        this.settings.itemsToShow = "3.1";
+      }
+      this.$refs.myCarousel.restartCarousel();
+    },
+
+    toggleSwitch() {
+      this.$emit('toggle-switch');
+    },
+
     scrollLeft() {
       this.$refs.myCarousel.prev();
       this.$emit('scrolling');
@@ -140,6 +188,40 @@ h1 {
 }
 .carousel__slide--active:hover {
   cursor: pointer;
+}
+
+@media only screen and (max-width: 1100px) {
+.btn {
+    height: 249px;
+    width: 368px;
+    position: absolute;
+}
+
+h1 {
+  margin: 0;
+  padding: 10px 10px 10px 10px;
+  font-size: 85px;
+  font-family: 'Gothic A1', sans-serif;
+}
+
+.scroll-btn {
+  display: none;
+}
+
+.carousel__slide > .carousel__item {
+  transform: scale(0.6);
+}
+
+.carousel__slide--next > .carousel__item {
+  transform: scale(0.6) translate(-10px);
+}
+.carousel__slide--prev > .carousel__item {
+  transform: scale(0.6) translate(10px);
+}
+.carousel__slide--active > .carousel__item {
+  transform: scale(1);
+
+}
 }
 
 </style>
