@@ -26,6 +26,10 @@ export default {
     window.addEventListener("scroll", this.onScroll)
   },
 
+  unmounted() {
+    window.removeEventListener("scroll", this.onScroll)
+  },
+
   methods: {
     onScroll() {
       this.windowTop = window.top.scrollY;

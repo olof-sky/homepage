@@ -119,6 +119,10 @@ export default {
     }
   },
 
+  unmounted() {
+    window.removeEventListener("scroll", this.onScroll)
+  },
+
   methods: {
     toggleAboutMeCard() {
       if(this.aboutMeToggled) {
@@ -645,7 +649,7 @@ p {
   cursor: pointer;
   width: 70px;
   height: 70px;
-  background: #bfbdbd;
+  background: #e2e2e2;
   transition: all 0.1s ease-in-out;
 }
 
