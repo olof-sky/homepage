@@ -155,14 +155,14 @@ export default {
 
 .topnav-li a
 {
-   padding: 8px 16px 8px 16px;
+   padding: 8px 16px 8px 16px !important;
    border: 3px solid transparent;
    position: relative;
 }
 
 .topnav-li-active a
 {
-   padding: 8px 16px 8px 16px;
+   padding: 8px 16px 8px 16px !important;
    border: 3px solid transparent;
    position: relative;
 }
