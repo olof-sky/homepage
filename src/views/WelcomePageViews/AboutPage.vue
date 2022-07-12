@@ -1,7 +1,7 @@
 <template>
     <div class="main-content">
       <div class="about-cards">
-        <div class ="about-card" :id="!showScreen && windowWidth > 1100 ? 'screen-hidden' : 'screen-shown'">
+        <div class ="about-card" :id="!showScreen && windowWidth > 1100 && windowHeight < 1200 ? 'screen-hidden' : 'screen-shown'">
           <div class="mac-window-card">
             <div class="mac-window-card-header">
               <div class="mac-window-card-header-dots">
@@ -12,13 +12,12 @@
             </div>
             <div class="mac-window-card-text">
               <h1>Developer</h1>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                Magnam ipsam sequi animi dolor explicabo odio officia, fugiat veniam sit magni?</p>
-              <p>Alias similique, libero omnis laborum repudiandae rerum reprehenderit! Voluptatem, fugiat.
-                Fugiat veniam sit magni? Alias similique, libero omnis laborum repudiandae rerum reprehenderit! Voluptatem, fugiat.</p>
-            </div>
-            <div class="code-icon">
-              <h2>&lt;/&gt;</h2>
+              <p>A curiosity for IT and computing got me interested in development as a kid. In 2021-2022 I had some internships and landed my first job as a developer.</p>
+              <p>My main focus has been web development. I've been working in different languages such as Java, JavaScript and Python.
+              On the backend side I've built API's, worked with relational mapping and MySQL databases.</p>
+              <div class="code-icon">
+                <h2>&lt;/&gt;</h2>
+              </div>
             </div>
           </div>
           <img class="image" id="screen-left" :src="screenLeft"/>
@@ -33,8 +32,7 @@
         </div>      
         <div :class="!showLaptop && windowWidth > 1100 ? 'art-text-container-hidden' : 'art-text-container-shown'">
           <h1>Hobby artist</h1>
-          <p>As a teenager i had a brief period where i drawed comics. This led me on to try other medias and artforms, one of them being watercolor. 
-            The years went and i rarely painted, until the day my wife handed me some paper and encouraged me to bring my old hobby back to life.</p>
+          <p>I've always been fascinated by art. During the corona outbreak I found myself having a lot of time, so I decided to teach myself how to draw. This led me to try different medias and artforms, one of them being watercolor. The thing I enjoy most with art is painting living beings.</p>
         </div>
         <div class="about-card" :id="!showMobile && windowWidth > 1100 ? 'mobile-hidden' : 'mobile-shown'">
           <div class="mobile-and-splash">
@@ -50,20 +48,20 @@
                 <h1>Random facts</h1>
                   <ul>
                     <li>Coffee is breakfast</li>
-                    <li>I love gaming</li>
+                    <li>Rocket league fanatic</li>
                     <li>Design freak</li>
                     <li>Like keeping houseplants</li>
-                    <li>I spend to much time in front of screens</li>
+                    <li>Early bird</li>
                   </ul>
                 <p id="about-btn-text">More about me...</p>
               </div>
               <div class="more-facts" :id="aboutMeToggled ? 'more-facts-shown' : 'more-facts-hidden'">
                 <h1>More?</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                Magnam ipsam sequi animi dolor explicabo odio officia, fugiat veniam sit magni? Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                Magnam ipsam sequi animi dolor explicabo odio officia, fugiat veniam sit magni?</p>
-                <p>Alias similique, libero omnis laborum repudiandae rerum reprehenderit! Voluptatem, fugiat.
-                Fugiat veniam sit magni? Alias similique, libero omnis laborum repudiandae rerum reprehenderit! Voluptatem, fugiat.</p>
+                <p>IT and technology have been a long lived interest for me. I started out young with developing and hosting game servers with my friend. 
+                  I also wrote my first applications in Python and created some simple games and a range of gamingtools.</p>
+                  <p>After moving out from my childhood home I made a living in the construction industry for a while.
+                  Nowadays I have commited  myself working full-time getting into development as a profession. On my free time I enjoy spending time with my family and friends, playing games, cooking and being out in nature.
+                  Happily married with my best friend for {{ married }} years.</p>
                 <p id="about-btn-text">...Less about me</p>
               </div>
             </div>
@@ -107,6 +105,7 @@ export default {
       windowHeight: window.innerHeight,
       windowWidth: window.innerWidth,
       activeUrl: '',
+      married: 2016,
     }
   },
 
@@ -117,6 +116,7 @@ export default {
       this.showLaptop = true;
       this.showMobile = true;
     }
+    this.married = (new Date().getFullYear() - this.married);
   },
 
   unmounted() {
@@ -202,7 +202,7 @@ h1 {
 }
 
 p {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 400;
   font-family: 'Montserrat', sans-serif;
   line-height: 1.7;
@@ -265,7 +265,7 @@ p {
   margin: 100px 0 0 120px;
   width: 0%;
   max-width: 700px;
-  height: 400px;
+  height: 460px;
   border-radius: 8px;
   background: #00000000;
   transition: all .3s linear;
@@ -276,10 +276,10 @@ p {
   margin: -250px 0 0 700px;
   width: 40%;
   max-width: 600px;
-  height: 400px;
+  height: 460px;
   border-radius: 8px;
   box-shadow: 0px 3px 7px 0px rgb(155 155 155 / 20%);
-  background: #ffffff52;
+  background: #ffffffc0;
   transition: all .3s linear;
 }
 
@@ -307,7 +307,7 @@ p {
 }
 
 #screen-shown .mac-window-card h1 {
-  margin: 25px 0 0 0;
+  margin: 35px 0 25px 0;
   padding: 0 60px 0 60px;
   transition: all 0.1s linear;
 }
@@ -317,10 +317,11 @@ p {
   left: 50%;
   color: rgba(33, 33, 33, 0.75);
   transition: all 0.1s linear;
+  font-size: 17px;
 }
 
 #screen-shown .mac-window-card .code-icon {
-    margin: -3% 0 0 84%;
+    margin: 0 0 0 84%;
     font-size: 45px;
     transition: all 0.1s linear;
     font-family: 'Gothic A1', sans-serif;
@@ -377,6 +378,11 @@ p {
   opacity: 66%;
   box-shadow: 7px 7px 7px 0px rgb(155 155 155 / 20%);
   transition: all 0.3s ease-in-out;
+}
+
+#laptop-right {
+  width: 55%;
+  height: 55%;
 }
 
 .image-1 {
@@ -566,8 +572,10 @@ p {
 }
 
 .mobile-text-container-shown p {
+  text-align: left;
   padding: 10px 10% 20px 10%;
   font-size: 15px;
+  margin: 0;
 }
 
 .mobile-text-container-facts {
@@ -681,10 +689,6 @@ p {
     font-size: 33px;
   }
 
-  p {
-    font-size: 14px;
-  }
-
   .image {
     height: 50%;
     width: 50%;
@@ -701,6 +705,7 @@ p {
   }
 
   .image-3 {
+    bottom: 18%;
     height: 35%;
   }
   
@@ -714,23 +719,26 @@ p {
   
   #screen-shown .mac-window-card[data-v-828a76b8] {
     margin: -250px 0 0 550px;
-    height: 400px;
+    height: 460px;
   }
 
   #screen-shown .mac-window-card .code-icon[data-v-828a76b8] {
-    margin: -2% 0 0 84%;
+    margin: 0 0 0 84%;
   }
 
   #screen-shown .mac-window-card h1 {
-    font-size: 33px;
+    margin: 25px 0 0 0;
+    padding: 10px 35px 0 35px !important;
   }
   
   #screen-shown .mac-window-card p {
-    font-size: 14px;
+    padding: 5px 40px 0 40px !important;
   }
 
-  #laptop-shown {
-    margin-right: -14%;
+
+  #laptop-right {
+    width: 40%;
+    height: 40%;
   }
 
   #laptop-shown .laptop-art-container {
@@ -763,7 +771,7 @@ p {
   } 
 
   p {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .image {
@@ -873,6 +881,14 @@ p {
     background: #ffffffeb;
   }
 
+  #screen-shown .mac-window-card h1 {
+    padding: 10px 25px 0 25px;
+  }
+  
+  #screen-shown .mac-window-card p {
+    padding: 10px 30px 0 30px;
+  }
+
   #screen-shown .mac-window-card .code-icon[data-v-828a76b8] {
     right: 0;
     bottom: -50px;
@@ -884,7 +900,7 @@ p {
   }
   
   #screen-shown .mac-window-card p {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   #laptop-shown {
@@ -923,7 +939,7 @@ p {
     align-items: center;
     width: 90%;
     max-width: 100%;
-    margin: 220px 0 270px 0;
+    margin: 180px 0 270px 0;
   }
   
   .mobile-and-splash {
@@ -956,18 +972,23 @@ p {
     max-width: 75%;
   }
 
+  .mobile-text-container-facts {
+    padding-bottom: 10px; 
+  }
+
   .mobile-text-container-shown {
     padding: 20px;
     background: #ffffffb8;
   }  
   
-  .mobile-text-container-shown h1{
-    margin: 25px 0 0 0;
+  .mobile-text-container-shown h1 {
+    margin: 25px 0 15px 0;
     font-size: 33px;
   }
 
-  .mobile-text-container-shown p{
-    font-size: 14px;
+  .mobile-text-container-shown p {
+    font-size: 16px;
+    padding: 0px 10% 35px 10%;
   }
 
   #arrow-right {
