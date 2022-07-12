@@ -9,18 +9,18 @@
         <div class="topnav">
           <ul>
             <li :class="activeUrl == '/' ? 'topnav-li-active' : 'topnav-li'"><router-link @click="scrollIfWelcomePage('about')" to="/">about</router-link></li>
-            <li :class="activeUrl == '/artfolio' ? 'topnav-li-active' : 'topnav-li'"><router-link to="/artfolio">artfolio</router-link></li>
+            <li class="topnav-li"><a href="https://konst.se/olof" target="_blank">artfolio</a></li>
             <li :class="activeUrl == '/codefolio' ? 'topnav-li-active' : 'topnav-li'"><router-link to="/codefolio">codefolio</router-link></li>
-            <li :class="activeUrl == '/github' ? 'topnav-li-active' : 'topnav-li'"><router-link to="/github">github</router-link></li>
+            <li class="topnav-li"><a href="https://github.com/olof-sky" target="_blank">github</a></li>
             <li :class="activeUrl == '/contact' ? 'topnav-li-active' : 'topnav-li'"><router-link @click="scrollIfWelcomePage('contact')" to="/contact">contact</router-link></li>
           </ul>
         </div>
         <div :class="hamburgerMenuVisible ? 'topnav-hamburger-toggled' : 'topnav-hamburger-untoggled'">
           <ul @click="toggleHamburgerMenu()">
-            <li :class="activeUrl == '/about' ? 'topnav-li-hamburger-active' : 'topnav-li-hamburger'"><router-link to="/about">about</router-link></li>
-            <li :class="activeUrl == '/artfolio' ? 'topnav-li-hamburger-active' : 'topnav-li-hamburger'"><router-link to="/artfolio">artfolio</router-link></li>
+            <li :class="activeUrl == '/' ? 'topnav-li-hamburger-active' : 'topnav-li-hamburger'"><router-link to="/">about</router-link></li>
+            <li class="topnav-li-hamburger"><a href="https://konst.se/olof" target="_blank">artfolio</a></li>
             <li :class="activeUrl == '/codefolio' ? 'topnav-li-hamburger-active' : 'topnav-li-hamburger'"><router-link to="/codefolio">codefolio</router-link></li>
-            <li :class="activeUrl == '/github' ? 'topnav-li-hamburger-active' : 'topnav-li-hamburger'"><router-link to="/github">github</router-link></li>
+            <li class="topnav-li-hamburger"><a href="https://github.com/olof-sky" target="_blank">github</a></li>
             <li :class="activeUrl == '/contact' ? 'topnav-li-hamburger-active' : 'topnav-li-hamburger'"><router-link to="/contact">contact</router-link></li>
           </ul>
         </div>
