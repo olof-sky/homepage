@@ -366,6 +366,10 @@ export default {
 }
 
 @media only screen and (max-width: 1100px) { 
+  .project-component-content {
+    width: 87%;
+  }
+
   .project-container {
     margin: 300px 0 120px 0;
   }

@@ -98,7 +98,7 @@ li {
   text-align: left;
   flex-direction: column;
   font-size: 16px;
-  font-family: Elena,-apple-system,BlinkMacSystemFont,Roboto,roboto slab,droid serif,segoe ui,system-ui,Arial,sans-serif;;
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   line-height: calc(1.5em + .2vw);
   word-break: break-word;
@@ -136,7 +136,8 @@ li {
 
 .info-text {
   padding: 0 0 0 0;
-  font-size: 20px;
+  font-size: 18px;
+  
 }
 
 ul {
@@ -147,7 +148,7 @@ li {
   display: inline-flex;
   text-align: center;
   padding: 15px;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .tools-used {
