@@ -2,7 +2,7 @@
 
   <div class="main-content">
     <div class="info-container">
-      <div v-click-outside="toggleInfo" id="info-container-card-id" :class="moreInfoToggled ? 'info-container-card' : 'info-container-card-hidden'">
+      <div v-if="moreInfoToggled" v-click-outside="hideInfoContainer" id="info-container-card-id" :class="moreInfoToggled ? 'info-container-card' : 'info-container-card-hidden'">
         <div v-if="showFragContent" class="frag-content">
           <img class="info-container-card-header-img" :src="smallHeader ? fragHeaderSmall : fragHeader"/>
           <div class="info-container-card-container">
@@ -34,7 +34,7 @@
           </div>
         </div>
         <div v-if="showMoreComingContent" class="more-coming-content">
-          <img class="info-container-card-header-img" :src="fragHeader"/>
+          <img class="info-container-card-header-img" :src="smallHeader ? moreComingHeaderSmall : moreComingHeader"/>
           <div class="info-container-card-container">
             <div class="info-container-card-scrollable-div">
               <div class ="info-container-card-scrollable-div-content">
@@ -43,26 +43,29 @@
             </div>
           </div>
         </div>
-      </div>
-      <div :class="moreInfoToggled ? 'button-and-text-toggled' : 'button-and-text-untoggled'">
-        <button @click="toggleInfo" @touchdown="toggleInfo" class="info-container-btn">
+        <button v-if="moreInfoToggled" @click="toggleInfo" @touchdown="toggleInfo" class="info-container-btn">
           <fa class="info-container-btn-icon" :id="moreInfoToggled ? 'arrow-up' : 'arrow-down'" :icon="[ 'fa', 'fa-arrow-right' ]"/>
         </button>
-        <div v-if="!moreInfoToggled" :class="moreInfoToggled ? 'check-out-more-text-toggled' : 'check-out-more-text-untoggled'">Show</div>
         <div v-if="moreInfoToggled" :class="moreInfoToggled ? 'check-out-more-text-toggled' : 'check-out-more-text-untoggled'">Hide</div>
       </div>
     </div>
     <div class="project-container">
       <img class="laptop" :src="codefolioLaptop"/>
       <div class="slider-container">
-        <SlideTest @toggle-switch="toggleInfo()" @scrolling="getContent()"/>
+        <ProjectSlide @toggle-switch="toggleInfo()" @scrolling="getContent()"/>
       </div>
+    </div>
+    <div :class="moreInfoToggled ? 'button-and-text-toggled' : 'button-and-text-untoggled'">
+      <button v-if="!moreInfoToggled" @click="toggleInfo" @touchdown="toggleInfo" class="info-container-btn">
+        <fa class="info-container-btn-icon" :id="moreInfoToggled ? 'arrow-up' : 'arrow-down'" :icon="[ 'fa', 'fa-arrow-right' ]"/>
+      </button>
+      <div v-if="!moreInfoToggled" :class="moreInfoToggled ? 'check-out-more-text-toggled' : 'check-out-more-text-untoggled'">Show</div>
     </div>
   </div>
 </template>
 
 <script>
-import SlideTest from "../../components/CodefolioProjects/ProjectSlide.vue"
+import ProjectSlide from "../../components/CodefolioProjects/ProjectSlide.vue"
 import CodefolioLaptop from "../../assets/codefolio/CodefolioLaptop.png"
 import MacWindow from "../../assets/codefolio/MacWindow.png"
 import FragContent from "../../assets/codefolio/FragCalculator.png"
@@ -77,10 +80,12 @@ import AfasiaHeader from "../../assets/codefolio/AphasiaHeader.png"
 import AfasiaHeaderSmall from "../../assets/codefolio/AphasiaHeaderSmall.png"
 import AfasiaInfo from "../../components/CodefolioProjects/ProjectInfoBox/Afasia/AfasiaInfo.vue"
 import MoreComingContent from "../../assets/codefolio/MoreComing.png"
+import MoreComingHeader from "../../assets/codefolio/MoreComingHeader.png"
+import MoreComingHeaderSmall from "../../assets/codefolio/MoreComingHeaderSmall.png"
 
 export default {
   components: {
-    SlideTest,
+    ProjectSlide,
     FragCalculatorInfo,
     AfasiaInfo,
   },
@@ -107,6 +112,8 @@ export default {
       afasiaHeaderSmall: AfasiaHeaderSmall,
       webscraperHeader: WebscraperHeader,
       webscraperHeaderSmall: WebscraperHeaderSmall,
+      moreComingHeader: MoreComingHeader,
+      moreComingHeaderSmall: MoreComingHeaderSmall,
       moreInfoToggled: false,
       showFragContent: false,
       showAfasiaContent: false,
@@ -150,8 +157,7 @@ export default {
     },
 
     hideInfoContainer() {
-      let className = document.getElementById('info-container-card-id').classList;
-      if (this.moreInfoToggled && className[0] == 'info-container-card') {
+      if (this.moreInfoToggled && this.windowWidth > 1100) {
         this.moreInfoToggled = false;
       }
     },
@@ -159,6 +165,7 @@ export default {
   
   watch: {
     windowWidth() {
+      this.windowWidth = window.innerWidth;
       this.getHeaderSize();
     }
   },
@@ -170,7 +177,6 @@ export default {
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center;
   flex-direction: column;
   align-items: center;
 }
@@ -257,7 +263,6 @@ export default {
 
 .info-container-card-scrollable-div-content {
     padding: 5px;
-    padding-bottom: 140px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -294,8 +299,7 @@ export default {
 }
 
 .button-and-text-untoggled {
-  position: absolute;
-  bottom: 0px;
+
   transition: all 0.3s ease-in-out;
   z-index: 1;
 }
@@ -308,7 +312,7 @@ export default {
 .check-out-more-text-toggled {
   font-family: 'Montserrat', sans-serif;
   margin-top: 14px;
-  padding-bottom: 250px;
+  padding-bottom: 150px;
 }
 
 .info-container-btn {
@@ -351,7 +355,21 @@ export default {
 
 /* ------------------- */
 
+@media only screen and (max-width: 500px) {
+  .info-container-card {
+    margin-top: 500px !important;
+  }
+
+  .project-container {
+    margin: 200px 0 120px 0 !important;
+  }
+}
+
 @media only screen and (max-width: 1100px) { 
+  .project-container {
+    margin: 300px 0 120px 0;
+  }
+
   .laptop {
     width: 90%;
     margin-top: 55px;
@@ -360,6 +378,10 @@ export default {
   .slider-container {
     margin-top: 50px;
     width: 100%;
+  }
+
+  .info-container {
+    top: 0;
   }
 
   .info-container-card {
@@ -389,12 +411,13 @@ export default {
     transition: all 0.1s ease-in-out;
   }
 
-  .info-container-card-scrollable-div-content {
-    padding-bottom: 40px;
+  .button-and-text-untoggled {
+    bottom: -15%;
+    padding-bottom: 150px;
   }
-  
+
   .check-out-more-text-toggled {
-    padding-bottom: 400px;
+    padding-bottom: 150px;
   }
 }
 </style>  
