@@ -38,9 +38,8 @@ export default {
 <style scoped>
 .main-content {
   position: relative;
-  z-index: -1;
   height: 700px;
-  background-color: #FFF;
+  background-color: #fff;
 }
 
 #header-name {
@@ -102,7 +101,7 @@ export default {
   display: inline-flex;
   align-items: center;
   margin-top: 25px;
-  margin-left: 27px;
+  margin-left: 65px;
   padding: 0;
   height: 42px;
   font-size: 20px;
@@ -118,7 +117,7 @@ a:hover { text-decoration: none; color: #00000080; }
 
 .social-media-line {
   display: inline-block;
-  width: 58px;
+  width: 65px;
   height: 3px;
   margin-right: 18px;
   margin-left: 18px;

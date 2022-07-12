@@ -26,6 +26,18 @@ export default {
     NavBar,
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
 
 <style>
@@ -36,6 +48,7 @@ export default {
     text-align: center;
     position: relative;
     width: 100%;
+    height: -webkit-fill-available;
   }
 
   html, body{ 
@@ -45,9 +58,9 @@ export default {
     padding: 0;
   }
 
-  body::-webkit-scrollbar       {background-color:#fff;width:16px}
-  body::-webkit-scrollbar-track {background-color:#fff}
-  body::-webkit-scrollbar-thumb {background-color:#babac0;border-radius:16px;border:4px solid #fff}
+  body::-webkit-scrollbar       {background-color:transparent;width:16px; height:16px}
+  body::-webkit-scrollbar-track {background-color:transparent;}
+  body::-webkit-scrollbar-thumb {background-color:#babac0;border-radius:16px;border:4px solid #babac0;}
 
   @media only screen and (max-width: 1100px) {
   }

@@ -1,7 +1,7 @@
 <template>
   <div class="main-content">
     <div class="art-code-container">
-      <router-link to="/artfolio"><h1 :id="!scrollWatchDisabled ? 'art' : 'art-transition'">ART</h1></router-link>
+      <a href="https://konst.se/olof" target="_blank"><h1 :id="!scrollWatchDisabled ? 'art' : 'art-transition'">ART</h1></a>
       <div :id="!scrollWatchDisabled ? 'art-code-middle-line' : 'art-code-middle-line-transition'"></div>
       <router-link to="/codefolio"><h1 :id="!scrollWatchDisabled ? 'code' : 'code-transition'">CODE</h1></router-link>
     </div>
@@ -177,6 +177,18 @@ h1 {
     margin-left: 20px;
     transition: margin-left .7s ease-in-out;
   }  
+  
+  #art-transition:hover {
+    font-size: 44px; 
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+  #code-transition:hover {
+    font-size: 44px;
+    margin-left: 20px;
+    cursor: pointer;
+  }
 
   #code-transition {
     margin-left: 40px;

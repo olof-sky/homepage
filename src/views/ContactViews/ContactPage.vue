@@ -207,13 +207,20 @@ textarea::-webkit-scrollbar-thumb {background-color:#babac0;border-radius:16px;b
 
 @media only screen and (max-width: 1100px) { 
   .main-content::after {
-    content: "";
-    background: url("../../assets/contactBackground.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-    background-size: cover;
-  }
+  content: "";
+  background: url("../../assets/contactBackground.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
 
   input { 
     font-size: 18px;
@@ -248,7 +255,7 @@ textarea::-webkit-scrollbar-thumb {background-color:#babac0;border-radius:16px;b
   
   .email-form-container {
     width: 100%;
-    margin: 150px 0 70% 0;
+    margin: 150px 0 0 0;
   }
 }
   

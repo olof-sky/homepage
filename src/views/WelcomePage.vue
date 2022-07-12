@@ -56,9 +56,13 @@ body {
   box-shadow: inset 6px -5px 7px 0px rgb(155 155 155 / 20%);
 }
 
+.contact-component {
+height:100%;
+}
 @media only screen and (max-width: 1100px) {
   .component {
     height: 1200px;
   }
+
 }
 </style>
