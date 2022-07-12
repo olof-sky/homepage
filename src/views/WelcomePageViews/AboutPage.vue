@@ -761,7 +761,7 @@ p {
 }
 
 /* Mobile screen CSS  */
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 1100px) { 
   h1 {
     font-size: 33px;
   }
@@ -874,9 +874,9 @@ p {
   #screen-shown .mac-window-card[data-v-828a76b8] {
     position: relative;
     z-index: 1;
-    margin: 0 5% 0 5%;
+    margin: 0 0 0 0;
     padding-bottom: 50px;
-    width: 90%;
+    width: 98%;
     height: 100%;
     background: #ffffffeb;
   }
@@ -977,7 +977,7 @@ p {
   }
 
   .mobile-text-container-shown {
-    padding: 20px;
+    padding: 5px;
     background: #ffffffb8;
   }  
   
@@ -991,6 +991,14 @@ p {
     padding: 0px 10% 35px 10%;
   }
 
+  #facts-large #about-btn-text {
+    right: 90px;
+  }
+
+  #facts-large .mobile-text-container-btn {
+    right: 10px;
+  }
+
   #arrow-right {
     transform: rotate(90deg);
   }
@@ -999,5 +1007,10 @@ p {
     transform: rotate(270deg);
   }
 }
-  
+@media only screen and (max-width: 500px) {   
+  #facts-large {
+    max-width: 95%;
+  }
+}
+
 </style>
