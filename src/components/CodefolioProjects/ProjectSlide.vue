@@ -1,15 +1,13 @@
 <template>
-
-<div class="main-content">
-<button @click="scrollLeft" class="scroll-btn" id="scroll-left"><h1>&lt;&nbsp;</h1></button>
-  <Carousel ref="myCarousel" :settings="settings">
-    <Slide @click="toggleSwitch" @touchdown="toggleSwitch" v-for="slide in componentList.length" :key="slide">
-      <component :id="this.componentList[slide - 1]" class="carousel__item" v-bind:is="componentList[slide - 1]"></component>
-    </Slide>
-  </Carousel>
-  <button @click="scrollRight" class="scroll-btn" id="carousel__next"><h1>/&gt;</h1></button>
+  <div class="main-content">
+    <button @click="scrollLeft" class="scroll-btn" id="scroll-left"><h1>&lt;&nbsp;</h1></button>
+      <Carousel ref="myCarousel" :settings="settings">
+        <Slide @click="toggleSwitch" @touchdown="toggleSwitch" v-for="slide in componentList.length" :key="slide">
+          <component :id="this.componentList[slide - 1]" class="carousel__item" v-bind:is="componentList[slide - 1]"></component>
+        </Slide>
+      </Carousel>
+    <button @click="scrollRight" class="scroll-btn" id="carousel__next"><h1>/&gt;</h1></button>
   </div>
-
 </template>
 
 <script>
@@ -25,11 +23,11 @@ import 'vue3-carousel/dist/carousel.css';
 export default defineComponent({
   created() {
     window.addEventListener("resize", this.onResize);
-    window.addEventListener("load", this.changeCarouselWidth)
   },
 
   mounted() {
     this.changeCarouselWidth();
+    window.addEventListener("load", this.changeCarouselWidth);
   },
 
   unmounted() {
@@ -41,7 +39,7 @@ export default defineComponent({
     return {
       windowWidth: window.innerWidth,
       settings: {
-        itemsToShow: "",
+        itemsToShow: "3.1",
         wrapAround: "true",
       },
       componentList: [
