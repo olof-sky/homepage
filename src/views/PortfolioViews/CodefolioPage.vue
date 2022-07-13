@@ -192,6 +192,10 @@
       this.getHeaderSize();
     },
 
+    unmounted() {
+      window.removeEventListener("resize", this.onResize);
+    },
+
     methods: {
       onResize() {
         this.windowWidth = window.innerWidth;
