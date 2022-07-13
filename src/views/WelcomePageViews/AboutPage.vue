@@ -216,6 +216,7 @@ p {
   max-width: 1800px;
   margin-top: 350px;
   margin-bottom: 150px;
+  z-index: 0;
 }
 
 .about-card {
