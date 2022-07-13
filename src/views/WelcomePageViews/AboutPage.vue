@@ -61,7 +61,7 @@
                   I also wrote my first applications in Python and created some simple games and a range of gamingtools.</p>
                   <p>After moving out from my childhood home I made a living in the construction industry for a while.
                   Nowadays I have commited  myself working full-time getting into development as a profession. On my free time I enjoy spending time with my family and friends, playing games, cooking and being out in nature.
-                  Happily married with my best friend for {{ married }} years.</p>
+                  Happily married with my best friend for {{ yearsMarried }} years.</p>
                 <p id="about-btn-text">...Less about me</p>
               </div>
             </div>
@@ -105,7 +105,7 @@ export default {
       windowHeight: window.innerHeight,
       windowWidth: window.innerWidth,
       activeUrl: '',
-      married: 2016,
+      yearsMarried: new Date().getFullYear() - 2016,
     }
   },
 
@@ -116,7 +116,6 @@ export default {
       this.showLaptop = true;
       this.showMobile = true;
     }
-    this.married = (new Date().getFullYear() - this.married);
   },
 
   unmounted() {
