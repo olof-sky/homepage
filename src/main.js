@@ -11,7 +11,7 @@ import vClickOutside from "click-outside-vue3"
 
 import 'prism-es6/components/prism-markup-templating';
 import 'prism-es6/components/prism-python';
-import "vue-code-highlight/themes/prism-vsc-dark-plus.css";
+import 'prism-themes/themes/prism-vsc-dark-plus.css';
 import "vue-code-highlight/themes/window.css";
 
 library.add(fas, fab);
