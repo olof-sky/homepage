@@ -99,6 +99,7 @@ li {
 
 .image {
   width: 90%;
+  max-width: 600px;
   border-radius: 8px;
   position: relative;
   margin: 50px 0 40px 0;

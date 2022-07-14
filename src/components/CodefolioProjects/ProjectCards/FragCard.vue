@@ -23,20 +23,15 @@ export default {
 
 <style scoped>
 .project-card {
-  width: 100%;
+  display: inline-flex;
+  margin: 0 0 0 0;
   height: 100%;
-  pointer-events: none;
-}
-
-.project-card-large {
-  width: 100%;
-  height: 1000px;
   pointer-events: none;
 }
 
 .mac-window {
   position: absolute;
-  width: 100%;
+  width: inherit;
 }
 
 .mac-window-content {
