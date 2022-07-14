@@ -7,6 +7,7 @@
         </Slide>
       </Carousel>
     <button @click="scrollRight" class="scroll-btn" id="carousel__next"><h1>/&gt;</h1></button>
+  
   </div>
 </template>
 
@@ -26,8 +27,8 @@ export default defineComponent({
   },
 
   mounted() {
-    this.changeCarouselWidth();
     window.addEventListener("load", this.changeCarouselWidth);
+    this.changeCarouselWidth();
   },
 
   unmounted() {
@@ -41,7 +42,10 @@ export default defineComponent({
       settings: {
         itemsToShow: "3.1",
         wrapAround: "true",
+        autoplay: "0"
       },
+      
+      
       componentList: [
         "FragCard",
         "AfasiaCard",
@@ -159,6 +163,10 @@ h1 {
   transition: all 0.1s ease-in-out;
 }
 
+.carousel__slide--visible {
+  transform: rotateY(0);
+}
+
 .carousel__slide > .carousel__item {
   -moz-user-select: none;  
   -webkit-user-select: none;  
@@ -209,7 +217,6 @@ h1 {
 .carousel__slide > .carousel__item {
   transform: scale(0.6);
 }
-
 .carousel__slide--next > .carousel__item {
   transform: scale(0.6) translate(-10px);
 }
@@ -221,5 +228,4 @@ h1 {
 
 }
 }
-
 </style>
