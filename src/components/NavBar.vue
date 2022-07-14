@@ -243,7 +243,6 @@ a {
   .topnav-hamburger-untoggled {
     display: inline-flex;
     position: fixed;
-    width: 100% !important;
     height: 0px !important;
     right: 0;
     padding: 0;
@@ -322,14 +321,14 @@ a {
 
   .hamburger-menu-line-untoggled {
     height: 5px;
-    width: 100%;
+    width: 55px;
     background-color: #FFFFFF;
     transition: background-color 0.1s linear;
   }
 
   .hamburger-menu-line-dissapear {
     height: 5px;
-    width: 100%;
+    width: 55px;
     background-color: #000000;
   }
 
