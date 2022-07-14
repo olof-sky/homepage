@@ -88,7 +88,7 @@
     <div class="project-container">
       <img class="laptop" :src="codefolioLaptop" />
       <div class="slider-container">
-        <ProjectSlide @toggle-switch="toggleInfo()" @scrolling="getContent()" />
+        <SwiperSlide @toggleSwitch="toggleInfo"/>
       </div>
     </div>
     <div
@@ -125,7 +125,6 @@
 </template>
 
 <script>
-  import ProjectSlide from "../../components/CodefolioProjects/ProjectSlide.vue";
   import CodefolioLaptop from "../../assets/codefolio/CodefolioLaptop.png";
   import MacWindow from "../../assets/codefolio/MacWindow.png";
   import FragContent from "../../assets/codefolio/FragCalculator.png";
@@ -145,10 +144,13 @@
   import MoreComingHeaderSmall from "../../assets/codefolio/MoreComingHeaderSmall.png";
   import MoreComingInfo from "../../components/CodefolioProjects/ProjectInfoBox/MoreComing/MoreComingInfo.vue";
 
+  import SwiperSlide from "../../components/CodefolioProjects/SwiperSlide.vue"
+
+
 
   export default {
     components: {
-      ProjectSlide,
+      SwiperSlide,
       FragCalculatorInfo,
       AfasiaInfo,
       WebScraperInfo,
@@ -188,8 +190,8 @@
     },
 
     mounted() {
-      this.getContent();
       this.getHeaderSize();
+      this.getContent();
     },
 
     unmounted() {
@@ -201,28 +203,26 @@
         this.windowWidth = window.innerWidth;
       },
 
+      getContent() {
+        // Re-render component on $emit
+        this.showFragContent =
+          this.$el.querySelector('.swiper-slide-active').id == "frag-card";
+          this.activeContent = "frag-card"
+        this.showAfasiaContent =
+          this.$el.querySelector('.swiper-slide-active').id == "afasia-card";
+          this.activeContent = "afasia-card"
+        this.showWebscraperContent =
+          this.$el.querySelector('.swiper-slide-active').id == "webscraper-card";
+          this.activeContent = "webscraper-card"
+        this.showMoreComingContent =
+          this.$el.querySelector('.swiper-slide-active').id == "more-coming-card";
+          this.activeContent = "more-coming-card"
+      },
+
       getHeaderSize() {
         if (this.windowWidth < 1100) {
           this.smallHeader = true;
         } else this.smallHeader = false;
-      },
-
-      getContent() {
-        // Re-render component on $emit
-        this.$nextTick(() => {
-          this.showFragContent =
-            this.$el.querySelector(".carousel__slide--active > .carousel__item")
-              .id == "FragCard";
-          this.showAfasiaContent =
-            this.$el.querySelector(".carousel__slide--active > .carousel__item")
-              .id == "AfasiaCard";
-          this.showWebscraperContent =
-            this.$el.querySelector(".carousel__slide--active > .carousel__item")
-              .id == "WebscraperCard";
-          this.showMoreComingContent =
-            this.$el.querySelector(".carousel__slide--active > .carousel__item")
-              .id == "MoreComingCard";
-        });
       },
 
       toggleInfo() {
@@ -251,24 +251,25 @@
 <style scoped>
   .main-content {
     width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
   .project-container {
-    margin: 200px 0 120px 0;
+    height: 590px;
+    margin: 150px 0 0 0;
     position: relative;
     display: inline-flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    z-index: 0;
   }
 
   .slider-container {
-    width: 90%;
-    max-width: 1800px;
+    width: 80%;
+    max-width: 2000px;
     margin-bottom: 20px;
   }
 
@@ -296,8 +297,8 @@
   .info-container-card {
     position: relative;
     opacity: 100%;
-    width: 70%;
-    max-width: 1400px;
+    width: 85%;
+    max-width: 1300px;
     border-radius: 8px;
     box-shadow: 0px 3px 7px 0px rgb(155 155 155 / 20%);
     background: #fffffff5;
@@ -369,13 +370,14 @@
 
   .button-and-text-toggled {
     position: relative;
-    margin-top: -35px;
+    margin-top: 35px;
     transition: all 0.3s ease-in-out;
     z-index: 1;
   }
 
   .button-and-text-untoggled {
     transition: all 0.3s ease-in-out;
+    margin-top: 25px;
     z-index: 1;
   }
 
@@ -430,31 +432,39 @@
 
   /* ------------------- */
 
-  @media only screen and (max-width: 500px) {
+  @media only screen and (max-width: 700px) {
     .info-container-card {
-      margin-top: 500px !important;
+      margin-top: 450px !important;
     }
 
     .project-container {
-      margin: 200px 0 120px 0 !important;
+      margin: 250px 0 120px 0 !important;
+    }
+
+    .laptop {
+      width: 40% !important;
     }
   }
 
   @media only screen and (max-width: 1100px) {
-    .project-component-content {
-      width: 87%;
+    .main-content {
+      overflow-x: hidden;
+      min-height: -webkit-fill-available;
     }
 
     .project-container {
-      margin: 300px 0 120px 0;
+      width: 240%;
+      height: 100%;
+      margin: 450px 0 120px 0;
     }
 
     .laptop {
-      width: 90%;
+      width: 35%;
       margin-top: 55px;
     }
 
     .slider-container {
+      position: absolute;
       margin-top: 50px;
       width: 100%;
     }
@@ -465,8 +475,8 @@
 
     .info-container-card {
       position: relative;
-      margin-top: 100%;
-      width: 95%;
+      margin-top: 600px;
+      width: 93%;
     }
 
     .info-container-card-hidden {
@@ -491,12 +501,16 @@
     }
 
     .button-and-text-untoggled {
-      bottom: -15%;
-      padding-bottom: 150px;
+      margin-top: 15%;
     }
 
+    .button-and-text-toggled {
+      margin-top: 17%;
+    }
+
+
     .check-out-more-text-toggled {
-      padding-bottom: 150px;
+      padding-bottom: 150px !important;
     }
   }
 </style>
