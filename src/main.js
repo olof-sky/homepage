@@ -20,7 +20,11 @@ const store = createStore({
     state () {
       return {
         currentPage: "/",
-
+      }
+    },
+    getters: {
+      getPage (state) {
+        return state.currentPage;
       }
     },
     mutations: {
