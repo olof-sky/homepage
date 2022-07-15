@@ -2,29 +2,29 @@
   <div class="main-content">
     <div class="container">
       <div class="email-form-container">
-        <form action="http://localhost:3000/api/contact/send" id="contact-form" method="post">
+        <form action="/api/contact/send" id="contact-form" method="post">
           <div class="contact-label-card">
             <fa class="contact-label-card-icon" :icon="[ 'fa', 'fa-envelope' ]"/>
             <div class="email-form-input">
-                <input required type="email" id="email" name="email" aria-describedby="email" placeholder="E-mail*">
+                <input required type="email" id="email" name="email" v-model="email" aria-describedby="email" placeholder="E-mail*">
             </div>
           </div>
           <div class="contact-label-card">
             <fa class="contact-label-card-icon" :icon="[ 'fa', 'fa-user' ]"/>
             <div class="email-form-input">
-                <input required type="text" id="name" name="name" aria-describedby="name" placeholder="Name*">
+                <input required type="text" id="name" name="name" v-model="name" aria-describedby="name" placeholder="Name*">
             </div>
           </div>
           <div class="contact-label-card">
             <fa class="contact-label-card-icon" :icon="[ 'fa', 'fa-thumbtack' ]"/>
             <div class="email-form-input">
-                <input required type="subject" id="subject" name="subject" aria-describedby="subject" placeholder="Subject*">
+                <input required type="subject" id="subject" name="subject" v-model="subject" aria-describedby="subject" placeholder="Subject*">
             </div>
           </div>
           <div class="contact-label-card">
             <fa class="contact-label-card-icon" :icon="[ 'fa', 'fa-comment-dots' ]"/>
             <div class="email-form-input">
-              <textarea required type="text" rows="4" cols="50" id="text" name="text" aria-describedby="text" placeholder="Write me a message..."/>
+              <textarea required type="text" rows="4" cols="50" id="text" name="text" v-model="text" aria-describedby="text" placeholder="Write me a message..."/>
             </div>
           </div>
           <button class="submit-button" type="submit"><fa class="submit-button-icon" :icon="[ 'fa', 'fa-paper-plane' ]"/></button>
@@ -35,16 +35,39 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   components: {
   },
 
   data() {
     return {
+      email: '',
+      name: '',
+      subject: '',
+      text: '',
     }
   },
 
   methods: {
+    handleSubmit() {
+      this.submitting = true;
+      axios
+        .post("/api/contact/send", {
+          email: this.email,
+          name: this.name,
+          subject: this.subject,
+          text: this.text,
+        })
+        .then(() => {
+          this.email = "";
+          this.name = "";
+          this.subject = "";
+          this.text = "";
+          this.submitting = false;
+        })
+    },
   }
 }
 </script>
