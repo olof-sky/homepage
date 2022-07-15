@@ -11,6 +11,8 @@ Some of the pages planed where removed to make room for links to other media sit
 
 ## :mag: Issues
 I've had weird issues on IOS devices and Brave browser when opening the "Codefolio" page. The vue3 carousel slider will get stuck and the page needs to update before being able to move it correctly again. I have not found the root of the problem yet unfortunatly. 
+### Solved
+- :heavy_check_mark: Rebuilt vue-slider with new component.
 - Feel free to contribute if you find anything to improve.
 
 ## 	:page_facing_up: Project setup
