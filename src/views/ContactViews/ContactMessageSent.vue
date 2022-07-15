@@ -3,9 +3,9 @@
     <div class="message-card">
       <h1>Thanks for your message!</h1>
       <h3>I'll get in touch with you as soon as possible.</h3>
-      <button class="back-btn">
-        <router-link to="/"><fa class="back-btn-icon" :icon="[ 'fa', 'fa-arrow-left' ]"/></router-link>
-      </button>
+        <router-link to="/">
+          <button class="back-btn"><fa class="back-btn-icon" :icon="[ 'fa', 'fa-arrow-left' ]"/></button>
+        </router-link>
       </div>
     </div>
 </template>
