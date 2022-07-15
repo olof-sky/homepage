@@ -61,7 +61,7 @@
                   I also wrote my first applications in Python and created some simple games and a range of gamingtools.</p>
                   <p>After moving out from my childhood home I made a living in the construction industry for a while.
                   Nowadays I have commited  myself working full-time getting into development as a profession. On my free time I enjoy spending time with my family and friends, playing games, cooking and being out in nature.
-                  Happily married with my best friend for {{ yearsMarried }} years.</p>
+                  Happily married to my best friend for {{ yearsMarried }} years.</p>
                 <p id="about-btn-text">...Less about me</p>
               </div>
             </div>
@@ -717,12 +717,12 @@ p {
     padding: 150px 0 200px 0;
   }
   
-  #screen-shown .mac-window-card[data-v-828a76b8] {
+  #screen-shown .mac-window-card {
     margin: -250px 0 0 550px;
     height: 460px;
   }
 
-  #screen-shown .mac-window-card .code-icon[data-v-828a76b8] {
+  #screen-shown .mac-window-card .code-icon {
     margin: 0 0 0 84%;
   }
 
@@ -871,10 +871,10 @@ p {
     max-width: 90%;
   }
 
-  #screen-shown .mac-window-card[data-v-828a76b8] {
+  #screen-shown .mac-window-card {
     position: relative;
     z-index: 1;
-    margin: 0 0 0 0;
+    margin: 0 0 0 0 !important;
     padding-bottom: 50px;
     width: 98%;
     height: 100%;
@@ -889,7 +889,7 @@ p {
     padding: 10px 30px 0 30px;
   }
 
-  #screen-shown .mac-window-card .code-icon[data-v-828a76b8] {
+  #screen-shown .mac-window-card .code-icon {
     right: 0;
     bottom: -50px;
     position: absolute;
@@ -1012,5 +1012,24 @@ p {
     max-width: 95%;
   }
 }
+</style>
 
+<style>
+@media only screen and (max-width: 1600px) {   
+  #screen-shown .mac-window-card {
+    margin: -250px 0 0 550px;
+    height: 460px;
+  }
+}
+@media only screen and (max-width: 1100px) {   
+  #screen-shown .mac-window-card {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 0 0 !important;
+    padding-bottom: 50px;
+    width: 98%;
+    height: 100%;
+    background: #ffffffeb;
+  }
+}
 </style>
