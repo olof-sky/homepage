@@ -2,7 +2,7 @@
     <header class="header-container">
       <div style="width: 100%">
         <div class="topnav-home-link">
-          <router-link to="/">
+          <router-link @click="scrollIfWelcomePage('top')" to="/">
             <HomeIconLogo></HomeIconLogo>
           </router-link>
         </div>
@@ -12,7 +12,7 @@
             <li class="topnav-li"><a href="https://konst.se/olof" target="_blank">artfolio</a></li>
             <li :class="activeUrl == '/codefolio' ? 'topnav-li-active' : 'topnav-li'"><router-link to="/codefolio">codefolio</router-link></li>
             <li class="topnav-li"><a href="https://github.com/olof-sky" target="_blank">github</a></li>
-            <li :class="activeUrl == '/contact' ? 'topnav-li-active' : 'topnav-li'"><router-link to="/contact">contact</router-link></li>
+            <li :class="activeUrl == '/contact' ? 'topnav-li-active' : 'topnav-li'"><router-link @click="scrollIfWelcomePage('contact')" to="/contact">contact</router-link></li>
           </ul>
         </div>
         <div :class="hamburgerMenuVisible ? 'topnav-hamburger-toggled' : 'topnav-hamburger-untoggled'">
@@ -68,7 +68,10 @@ export default {
 
     scrollIfWelcomePage(linkName){
       let pageHeight = 0;
-      switch(linkName) {         
+      switch(linkName) {
+        case "top":
+          pageHeight = 0;
+          break;  
         case "about":
           pageHeight = 700;
           break;
