@@ -63,6 +63,5 @@ height:100%;
   .component {
     height: 1200px;
   }
-
 }
 </style>

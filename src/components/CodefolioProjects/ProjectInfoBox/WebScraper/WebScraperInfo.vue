@@ -166,9 +166,6 @@
 <script>
 export default {
   name: "WebScraperInfo",
-
-  methods: {
-  },
 };
 </script>
 

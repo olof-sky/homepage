@@ -220,9 +220,6 @@
 <script>
 export default {
   name: "FragCalculatorInfo",
-
-  methods: {
-  },
 };
 </script>
 

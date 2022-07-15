@@ -143,10 +143,7 @@
   import MoreComingHeader from "../../assets/codefolio/MoreComingHeader.png";
   import MoreComingHeaderSmall from "../../assets/codefolio/MoreComingHeaderSmall.png";
   import MoreComingInfo from "../../components/CodefolioProjects/ProjectInfoBox/MoreComing/MoreComingInfo.vue";
-
   import SwiperSlide from "../../components/CodefolioProjects/SwiperSlide.vue"
-
-
 
   export default {
     components: {

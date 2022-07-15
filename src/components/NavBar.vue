@@ -475,7 +475,6 @@ a {
     align-items: center;
     transition: padding 0.1s linear;
   }
-
 }
 
 </style>

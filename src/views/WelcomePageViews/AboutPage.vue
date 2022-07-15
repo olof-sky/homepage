@@ -79,12 +79,8 @@ import ColorSplash from '../../assets/ColorSplash.png'
 import ImageOne from '../../assets/artworks/img-1.png'
 import ImageTwo from '../../assets/artworks/img-2.png'
 import ImageThree from '../../assets/artworks/img-3.png'
+
 export default {
-
-  components: {
-
-  },
-
   data() {
     return {
       screenLeft: ScreenLeft,

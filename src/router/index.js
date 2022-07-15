@@ -1,9 +1,7 @@
 import { createWebHistory, createRouter } from "vue-router";
 import WelcomePage from "@/views/WelcomePage.vue";
-
 import ContactPage from "@/views/ContactViews/ContactPage.vue";
 import ContactMessageSent from "@/views/ContactViews/ContactMessageSent.vue";
-
 import CodefolioPage from "@/views/PortfolioViews/CodefolioPage.vue";
 
 const router = createRouter({
@@ -34,6 +32,5 @@ const router = createRouter({
     },
   ],
 });
-
 
 export default router;

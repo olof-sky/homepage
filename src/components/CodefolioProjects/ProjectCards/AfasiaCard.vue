@@ -16,8 +16,6 @@ export default {
       macWindow: MacWindow,
     }
   },
-  methods: {
-  },
 }
 </script>
 

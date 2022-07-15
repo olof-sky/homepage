@@ -38,9 +38,6 @@ export default {
     SwiperSlide,
   },
 
-  mounted() {
-  },
-
   data() {
     return {
       swiper: {},
@@ -68,6 +65,7 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 .main-content {
   display: flex;
@@ -153,7 +151,6 @@ h1 {
   width: 60%;
 }
 }
-
 </style>
 
 <style>

@@ -9,8 +9,6 @@
 </template>
 
 <script>
-
-
 export default {
   components: {
   },
@@ -45,8 +43,6 @@ export default {
       else (this.scrollWatchDisabled = false);
     }
   },
-
-
 }
 </script>
 
