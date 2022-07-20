@@ -4,7 +4,7 @@
         <div class="profile-text">
           <h1 id="header-name">Olof</h1>
           <h1 id="header-lastname">Schylander</h1>
-          <p id="profile-header-text">Developer and artist, using both my problem solving abilities and my creative side to build applications, backend functionality and websites.</p>
+          <p id="profile-header-text">Developer and hobby artist focused on problem solving, the small details and my own learning in order to build applications, backend functionality and websites.</p>
           <ul class="social-media-icons">
             <div class="social-media-line"/>
             <li><a class="social-media-link" href="https://github.com/olof-sky"><fa :icon="[ 'fab', 'github' ]"/></a></li>

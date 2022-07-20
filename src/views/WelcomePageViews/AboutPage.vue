@@ -49,8 +49,8 @@
                   <ul>
                     <li>Coffee is breakfast</li>
                     <li>Rocket league fanatic</li>
-                    <li>Design freak</li>
-                    <li>Like keeping houseplants</li>
+                    <li>Structured mindset</li>
+                    <li>Eager to learn</li>
                     <li>Early bird</li>
                   </ul>
                 <p id="about-btn-text">More about me...</p>
