@@ -9,7 +9,7 @@
           moreInfoToggled ? 'info-container-card' : 'info-container-card-hidden'
         "
       >
-        <div v-if="showFragContent" class="frag-content">
+        <div v-show="showFragContent" class="frag-content">
           <img
             class="info-container-card-header-img"
             :src="smallHeader ? fragHeaderSmall : fragHeader"
@@ -22,7 +22,7 @@
             </div>
           </div>
         </div>
-        <div v-if="showAfasiaContent" class="afasia-content">
+        <div v-show="showAfasiaContent" class="afasia-content">
           <img
             class="info-container-card-header-img"
             :src="smallHeader ? afasiaHeaderSmall : afasiaHeader"
@@ -35,7 +35,7 @@
             </div>
           </div>
         </div>
-        <div v-if="showWebscraperContent" class="webscraper-content">
+        <div v-show="showWebscraperContent" class="webscraper-content">
           <img
             class="info-container-card-header-img"
             :src="smallHeader ? webscraperHeaderSmall : webscraperHeader"
@@ -48,7 +48,7 @@
             </div>
           </div>
         </div>
-        <div v-if="showMoreComingContent" class="more-coming-content">
+        <div v-show="showMoreComingContent" class="more-coming-content">
           <img
             class="info-container-card-header-img"
             :src="smallHeader ? moreComingHeaderSmall : moreComingHeader"
@@ -88,7 +88,7 @@
     <div class="project-container">
       <img class="laptop" :src="codefolioLaptop" />
       <div class="slider-container">
-        <SwiperSlide @toggleSwitch="toggleInfo"/>
+        <SwiperSlide @toggleSwitch="toggleInfo" @newSlide="updateContent" @scrollBtn="showInfoContainer"/>
       </div>
     </div>
     <div
@@ -183,7 +183,8 @@
         showAfasiaContent: false,
         showWebscraperContent: false,
         showMoreComingContent: false,
-      };
+        directionalBtnPressed: false,
+      }
     },
 
     mounted() {
@@ -204,16 +205,16 @@
         // Re-render component on $emit
         this.showFragContent =
           this.$el.querySelector('.swiper-slide-active').id == "frag-card";
-          this.activeContent = "frag-card"
         this.showAfasiaContent =
           this.$el.querySelector('.swiper-slide-active').id == "afasia-card";
-          this.activeContent = "afasia-card"
         this.showWebscraperContent =
           this.$el.querySelector('.swiper-slide-active').id == "webscraper-card";
-          this.activeContent = "webscraper-card"
         this.showMoreComingContent =
           this.$el.querySelector('.swiper-slide-active').id == "more-coming-card";
-          this.activeContent = "more-coming-card"
+      },
+
+      updateContent() {
+        this.getContent()
       },
 
       getHeaderSize() {
@@ -230,9 +231,15 @@
       },
 
       hideInfoContainer() {
-        if (this.moreInfoToggled && this.windowWidth > 1100) {
+        if (!this.directionalBtnPressed && this.moreInfoToggled && this.windowWidth > 1100) {
           this.moreInfoToggled = false;
+          this.directionalBtnPressed = false;
         }
+        this.directionalBtnPressed = false;
+      },
+
+      showInfoContainer() {
+        this.directionalBtnPressed = true;
       },
     },
 

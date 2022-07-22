@@ -1,18 +1,18 @@
 <template>
   <div class="main-content">
     <button @click="scrollLeft" class="scroll-btn" id="scroll-left"><h1>&lt;&nbsp;</h1></button>
-      <swiper 
-        @click="toggleSwitch" @touchdown="toggleSwitch"
+      <swiper
+        @realIndexChange="newSlide"
         :loop="true"
         :centeredSlides="true"
         :centerInsufficientSlides="true"
         :watchSlidesProgress="true" 
         :slidesPerView="3" 
         class="mySwiper">
-        <swiper-slide id="webscraper-card"><WebscraperCard class="img-card"/></swiper-slide>
-        <swiper-slide id="frag-card"><FragCard class="img-card"/></swiper-slide>
-        <swiper-slide id="afasia-card"><AfasiaCard class="img-card"/></swiper-slide>
-        <swiper-slide id="more-coming-card"><MoreComingCard class="img-card"/></swiper-slide>
+        <swiper-slide @click="toggleSwitch('webscraper-card')" @touchdown="toggleSwitch('webscraper-card')" id="webscraper-card"><WebscraperCard class="img-card"/></swiper-slide>
+        <swiper-slide @click="toggleSwitch('frag-card')" @touchdown="toggleSwitch('frag-card')" id="frag-card"><FragCard class="img-card"/></swiper-slide>
+        <swiper-slide @click="toggleSwitch('afasia-card')" @touchdown="toggleSwitch('afasia-card')" id="afasia-card"><AfasiaCard class="img-card"/></swiper-slide>
+        <swiper-slide @click="toggleSwitch('more-coming-card')" @touchdown="toggleSwitch('more-coming-card')" id="more-coming-card"><MoreComingCard class="img-card"/></swiper-slide>
       </swiper>
     <button @click="scrollRight" class="scroll-btn" id="carousel__next"><h1>/&gt;</h1></button>
   </div>
@@ -38,6 +38,9 @@ export default {
     SwiperSlide,
   },
 
+  mounted() {
+  },
+
   data() {
     return {
       swiper: {},
@@ -51,18 +54,45 @@ export default {
   },
 
   methods: {
-    toggleSwitch() {
-      this.$emit('toggle-switch');
+    async newSlide() {
+      await this.toggleSwitch();
+      this.$emit('new-slide');
+    },
+
+    toggleSwitch(clickedSlide) {
+      let nextSlide = this.$el.querySelector('.swiper-slide-next').id;
+      let prevSlide = this.$el.querySelector('.swiper-slide-prev').id;
+      this.$el.querySelector('.swiper-slide-active').id == "more-coming-card";
+      let activeSlide = this.$el.querySelector('.swiper-slide-active').id;
+      
+      if (activeSlide == clickedSlide) {
+        this.$emit('toggle-switch');
+        this.$el.querySelector('.swiper-slide-active').id = clickedSlide;
+      }
+
+      else if (clickedSlide == nextSlide) {
+          this.scrollRight();
+      }
+
+      else if (clickedSlide == prevSlide) {
+          this.scrollLeft();
+      }
     },
 
     scrollLeft() {
       this.$el.querySelector('.swiper').swiper.slidePrev();
+      this.$emit('scroll-btn');
     },
 
     scrollRight() {
       this.$el.querySelector('.swiper').swiper.slideNext();
+      this.$emit('scroll-btn');
     },
   },
+
+  watch: {
+    classs() {console.log("Change23")}
+  }
 };
 </script>
 
