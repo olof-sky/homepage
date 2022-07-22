@@ -9,54 +9,34 @@
           moreInfoToggled ? 'info-container-card' : 'info-container-card-hidden'
         "
       >
-        <div v-show="showFragContent" class="frag-content">
+        <div>
           <img
+            v-show="showFragContent"
             class="info-container-card-header-img"
             :src="smallHeader ? fragHeaderSmall : fragHeader"
           />
-          <div class="info-container-card-container">
-            <div class="info-container-card-scrollable-div">
-              <div class="info-container-card-scrollable-div-content">
-                <FragCalculatorInfo class="project-component-content" />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div v-show="showAfasiaContent" class="afasia-content">
           <img
+            v-show="showAfasiaContent"
             class="info-container-card-header-img"
             :src="smallHeader ? afasiaHeaderSmall : afasiaHeader"
           />
-          <div class="info-container-card-container">
-            <div class="info-container-card-scrollable-div">
-              <div class="info-container-card-scrollable-div-content">
-                <AfasiaInfo class="project-component-content" />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div v-show="showWebscraperContent" class="webscraper-content">
           <img
+            v-show="showWebscraperContent"
             class="info-container-card-header-img"
             :src="smallHeader ? webscraperHeaderSmall : webscraperHeader"
           />
-          <div class="info-container-card-container">
-            <div class="info-container-card-scrollable-div">
-              <div class="info-container-card-scrollable-div-content">
-                <WebScraperInfo class="project-component-content" />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div v-show="showMoreComingContent" class="more-coming-content">
           <img
+          v-show="showMoreComingContent"
             class="info-container-card-header-img"
             :src="smallHeader ? moreComingHeaderSmall : moreComingHeader"
           />
           <div class="info-container-card-container">
             <div class="info-container-card-scrollable-div">
               <div class="info-container-card-scrollable-div-content">
-                <MoreComingInfo class="project-component-content" />
+                <FragCalculatorInfo v-show="showFragContent" class="project-component-content" />
+                <AfasiaInfo v-show="showAfasiaContent" class="project-component-content" />
+                <WebScraperInfo v-show="showWebscraperContent" class="project-component-content" />
+                <MoreComingInfo v-show="showMoreComingContent" class="project-component-content" />
               </div>
             </div>
           </div>
